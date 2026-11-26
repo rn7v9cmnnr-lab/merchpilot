@@ -79,12 +79,21 @@ window.__MP_FONTS={
   const today = () => new Date().toISOString().slice(0, 10);
   const log = (...a) => { console.log('[MerchPilot]', ...a); ui.status(a.join(' ')); };
 
+  let _sess = null;
   function session() {
     const s = [...document.scripts].map((x) => x.textContent).join('\n');
-    return { token: (s.match(/"token":"([^"]+)"/) || [])[1], accountId: (s.match(/"accountId":"([^"]+)"/) || [])[1] };
+    const r = { token: (s.match(/"token":"([^"]+)"/) || [])[1], accountId: (s.match(/"accountId":"([^"]+)"/) || [])[1] };
+    return r.token ? r : _sess || r;
   }
-  function coral(path, body) {
-    const { token } = session();
+  // Auf Seiten ohne eingebettetes Token (z. B. Dashboard-Ressource) Token aus /dashboard holen
+  async function ensureSession() {
+    if (session().token) return session();
+    const h = await (await fetch('/dashboard', { credentials: 'include' })).text();
+    _sess = { token: (h.match(/"token":"([^"]+)"/) || [])[1], accountId: (h.match(/"accountId":"([^"]+)"/) || [])[1] };
+    return _sess;
+  }
+  async function coral(path, body) {
+    const { token } = await ensureSession();
     return new Promise((res, rej) => {
       const x = new XMLHttpRequest();
       x.open('POST', '/api/ng-amazon/coral/' + path);
@@ -153,7 +162,7 @@ window.__MP_FONTS={
     do {
       const j = await coral('com.amazon.merch.search.MerchSearchService/FindDesigns', {
         pageSize: 250, pageToken, sortField: 'DateCreated', sortOrder: 'Descending', status: ['DRAFT','TRANSLATING','REVIEW','DECLINED','AMAZON_REJECTED','PUBLISHING','TIMED_OUT','PROPAGATED','PUBLISHED','REMOVED','LOCKED'], marketplaces: null, productTypes: null,
-        searchableOnRetail: null, accountId: session().accountId, __type: 'com.amazon.merch.search#FindDesignsRequest',
+        searchableOnRetail: null, accountId: (await ensureSession()).accountId, __type: 'com.amazon.merch.search#FindDesignsRequest',
       });
       all.push(...(j.results || [])); pageToken = j.pageToken && j.pageToken.length ? j.pageToken : null;
     } while (pageToken);
@@ -426,7 +435,7 @@ window.__MP_FONTS={
     };
   })();
 
-  window.MerchPilot = { version: '0.7.2', imgGet, imgPut, imgKeys, importInput, apiCapture: () => ls.get('apiCapture', []), lint: (it) => window.__MP_LINT(it, cfg().lintExtra || []), stats, monthly, sales, designs, cleanupCandidates, render, enqueue, queue, saveQueue, run, fillAndPublish, setColors, setPrices, config: (c) => (c ? ls.set('cfg', { ...ls.get('cfg', {}), ...c }) : cfg()), usedToday };
+  window.MerchPilot = { version: '0.8.0', imgGet, imgPut, imgKeys, importInput, apiCapture: () => ls.get('apiCapture', []), lint: (it) => window.__MP_LINT(it, cfg().lintExtra || []), stats, monthly, sales, designs, cleanupCandidates, render, enqueue, queue, saveQueue, run, fillAndPublish, setColors, setPrices, config: (c) => (c ? ls.set('cfg', { ...ls.get('cfg', {}), ...c }) : cfg()), usedToday };
   ui.mount();
   importInput();
 
