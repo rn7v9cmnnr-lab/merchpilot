@@ -43,11 +43,19 @@
   const mkQs = Object.values(MKT).map((m) => 'marketplaceId=' + m).join('&');
 
   // ---------- Daten ----------
+  // robust: leere Antworten / Drosselung -> bis zu 3 Versuche mit Pause
+  async function getJson(url) {
+    for (let k = 0; k < 3; k++) {
+      try { const r = await fetch(url); const t = await r.text(); if (r.ok && t) return JSON.parse(t); } catch (e) { /* nochmal */ }
+      await sleep(800 * (k + 1));
+    }
+    console.warn('[MerchPilot] keine Daten für', url.split('?')[0]); return {};
+  }
   async function sales(fromMs, toMs = Date.now()) {
     const rows = [];
     for (let end = toMs; end > fromMs;) {
       const from = Math.max(fromMs, end - 90 * 864e5);
-      const j = await (await fetch(`/api/reporting/purchases/records?${mkQs}&fromDate=${from}&toDate=${end}`)).json();
+      const j = await getJson(`/api/reporting/purchases/records?${mkQs}&fromDate=${from}&toDate=${end}`);
       for (const mid in j) for (const mp in j[mid]) for (const r of j[mid][mp]) {
         const cur = r.revenue?.code;
         rows.push({ id: mid, mkt: MKT_NAME[mp], type: r.productType, name: r.asinName || '', units: r.unitsSold, returned: r.unitsReturned, cancelled: r.unitsCancelled, royaltyEUR: (r.royalties?.value || 0) * (FX[cur] || 1), revenueEUR: (r.revenue?.value || 0) * (FX[cur] || 1), from, to: end });

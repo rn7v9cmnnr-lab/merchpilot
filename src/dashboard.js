@@ -9,8 +9,11 @@
   const addNav = () => {
     const nav = [...document.querySelectorAll('a[href="/advertise"]')][0];
     if (!nav || document.getElementById('mp-nav')) return;
-    const a = nav.cloneNode(true); a.id = 'mp-nav'; a.href = PATH; a.textContent = 'MerchPilot'; a.style.fontWeight = '700';
-    nav.parentElement.after ? nav.after(a) : nav.parentElement.appendChild(a);
+    // ganzen Menüeintrag (li/Wrapper) klonen, damit das Layout passt
+    const item = nav.closest('li') || nav;
+    const c = item.cloneNode(true); const a = c.tagName === 'A' ? c : c.querySelector('a');
+    a.id = 'mp-nav'; a.href = PATH; a.textContent = 'MerchPilot'; a.style.fontWeight = '700';
+    item.after(c);
   };
   addNav(); setTimeout(addNav, 2500);
 
@@ -64,7 +67,10 @@
   async function overview(force = false) {
     let s = JSON.parse(localStorage.getItem('mp.stats') || 'null');
     const stale = !s || Date.now() - new Date(s.generated).getTime() > 6 * 3600e3;
-    if (force || stale) { view.innerHTML = '<div class="mp-card">Lade Verkaufsdaten … (ca. 30 s)</div>'; s = await MP.stats(); }
+    if (force || stale) {
+      view.innerHTML = '<div class="mp-card">Lade Verkaufsdaten … (ca. 30 s)</div>';
+      try { s = await MP.stats(); } catch (e) { view.innerHTML = `<div class="mp-card">Fehler beim Laden: ${esc(e.message)} <button class="btn sec" id="mp-retry0">Nochmal</button></div>`; view.querySelector('#mp-retry0').onclick = () => overview(true); return; }
+    }
     const m = s.monthly; const last12 = m.slice(-12); const prev12 = m.slice(-24, -12);
     const sum = (a, k) => a.reduce((x, y) => x + y[k], 0);
     const max = Math.max(1, ...m.map((x) => x.units));
