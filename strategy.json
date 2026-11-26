@@ -225,12 +225,22 @@
   "breakEven": "ACoS ≤ 20 % (3,96 € Royalty bei 19,99 €)",
   "campaigns": [
    {
+    "name": "MP-DE-Auto-Discovery",
+    "mkt": "DE",
+    "type": "Sponsored Products, automatisch",
+    "keywords": "Amazon findet Begriffe – Ernte Mo + Do",
+    "bid": "0,20 €",
+    "budget": "2 €/Tag",
+    "period": "ab ASIN live bis 21.12.",
+    "status": "vorbereitet – wartet auf Freigabe + ASINs"
+   },
+   {
     "name": "MP-DE-Weihnachten-Exakt",
     "mkt": "DE",
     "type": "Sponsored Products, manuell, exakt",
     "keywords": "Design-Keywords der 11 Kandidaten",
     "bid": "0,30 €",
-    "budget": "3 €/Tag",
+    "budget": "2 €/Tag",
     "period": "ab ASIN live (~29.11.) bis 21.12.",
     "status": "vorbereitet – wartet auf Freigabe + ASINs"
    },
@@ -240,7 +250,7 @@
     "type": "Sponsored Products, manuell, Wortgruppe",
     "keywords": "Nischen-Keywords (padel shirt, kegelclub shirt …)",
     "bid": "0,20 €",
-    "budget": "2 €/Tag",
+    "budget": "1 €/Tag",
     "period": "ab ASIN live bis 21.12.",
     "status": "vorbereitet – wartet auf Freigabe + ASINs"
    },
@@ -256,11 +266,10 @@
    }
   ],
   "rules": [
-   "Keyword pausieren nach 10 Klicks ohne Verkauf",
-   "ASIN pausieren nach 15 Klicks ohne Verkauf",
+   "Mo + Do Suchbegriffe auswerten: Verkauf → exakt ernten, ≥10 Klicks ohne Verkauf → negativ",
+   "Design pausieren nach 15 Klicks ohne Verkauf",
    "ACoS > 30 % nach 7 Tagen → Gebot −20 %",
-   "Ab 21.12. Budget halbieren (Lieferfrist)",
-   "Keine Auto-Kampagnen (bisher ROAS 2,33 = Verlust)"
+   "Ab 21.12. Budget halbieren (Lieferfrist)"
   ],
   "history": {
    "spend": "465 $",
