@@ -154,11 +154,11 @@
   /* Item: { id, spec | imageDataUrl, title, brand, bullet1, bullet2, description, niche, products? } */
   const queue = () => ls.get('queue', []);
   const saveQueue = (q) => ls.set('queue', q);
-  function enqueue(items) {
+  function enqueue(items, { status = 'pending' } = {}) {
     const q = queue();
     for (const it of [].concat(items)) {
       const l = window.__MP_LINT ? window.__MP_LINT(it, cfg().lintExtra || []) : { ok: true, issues: [] };
-      q.push({ id: it.id || crypto.randomUUID(), status: l.ok ? 'pending' : 'blocked', added: new Date().toISOString(), lint: l.issues, ...it });
+      q.push({ id: it.id || crypto.randomUUID(), status: l.ok ? status : 'blocked', added: new Date().toISOString(), lint: l.issues, ...it });
     }
     saveQueue(q); ui.refresh(); return q.filter((x) => x.status === 'pending').length;
   }
