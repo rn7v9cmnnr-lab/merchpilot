@@ -367,7 +367,11 @@ window.__MP_FONTS={
   const URL = 'https://raw.githubusercontent.com/rn7v9cmnnr-lab/merchpilot/main/strategy.json';
   const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   async function load() {
-    try { const r = await fetch(URL + '?t=' + Date.now()); const j = await r.json(); localStorage.setItem('mp.strategy', JSON.stringify(j)); return j; }
+    try {
+      let sha = 'main';
+      try { const h = await fetch('https://api.github.com/repos/rn7v9cmnnr-lab/merchpilot/commits/main', { headers: { Accept: 'application/vnd.github.sha' } }); if (h.ok) sha = (await h.text()).trim(); } catch (e) { /* Fallback main */ }
+      const r = await fetch(URL.replace('/main/', `/${sha}/`)); const j = await r.json(); localStorage.setItem('mp.strategy', JSON.stringify(j)); return j;
+    }
     catch (e) { return JSON.parse(localStorage.getItem('mp.strategy') || 'null'); }
   }
   const PRIO = { A: '#0a7d5a', B: '#2e6bd6', C: '#9aa3b2' };
