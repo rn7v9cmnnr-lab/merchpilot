@@ -1,10 +1,22 @@
 {
   "manifest_version": 3,
   "name": "MerchPilot",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "MerchPilot-Hülle: lädt den aktuellen MerchPilot-Code aus GitHub und führt ihn auf merch.amazon.com aus.",
-  "permissions": ["scripting", "alarms", "storage"],
-  "host_permissions": ["https://merch.amazon.com/*", "https://raw.githubusercontent.com/*"],
-  "background": { "service_worker": "background.js" },
-  "action": { "default_title": "MerchPilot – Klick: täglicher Autopilot an/aus" }
+  "permissions": [
+    "scripting",
+    "alarms",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://merch.amazon.com/*",
+    "https://raw.githubusercontent.com/*",
+    "https://api.github.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "MerchPilot – Klick: täglicher Autopilot an/aus"
+  }
 }

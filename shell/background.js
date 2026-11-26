@@ -1,17 +1,26 @@
 // MerchPilot-Hülle. Einmal installieren – der eigentliche Code kommt bei jedem Seitenaufruf aus GitHub.
-const CODE_URL = 'https://raw.githubusercontent.com/rn7v9cmnnr-lab/merchpilot/main/bundle.js';
+const REPO = 'rn7v9cmnnr-lab/merchpilot';
 const AUTO_URL = 'https://merch.amazon.com/designs/new#mp-auto';
 
+// Neueste Version: Commit-Hash über die GitHub-API (max. 1x pro Minute), dann Datei zu genau diesem Commit laden.
+// So greift kein CDN-Cache – jede Änderung ist beim nächsten Seitenaufruf aktiv.
 async function getCode() {
+  const st = await chrome.storage.local.get(['code', 'sha', 'shaAt']);
   try {
-    const r = await fetch(CODE_URL + '?t=' + Date.now(), { cache: 'no-store' });
-    if (!r.ok) throw new Error('HTTP ' + r.status);
-    const code = await r.text();
-    await chrome.storage.local.set({ code, codeAt: Date.now() });
+    let sha = st.sha;
+    if (!sha || Date.now() - (st.shaAt || 0) > 60e3) {
+      const r = await fetch(`https://api.github.com/repos/${REPO}/commits/main`, { headers: { Accept: 'application/vnd.github.sha' }, cache: 'no-store' });
+      if (r.ok) { sha = (await r.text()).trim(); await chrome.storage.local.set({ shaAt: Date.now() }); }
+    }
+    if (sha && sha === st.sha && st.code) return st.code;
+    const r2 = await fetch(`https://raw.githubusercontent.com/${REPO}/${sha || 'main'}/bundle.js`);
+    if (!r2.ok) throw new Error('HTTP ' + r2.status);
+    const code = await r2.text();
+    await chrome.storage.local.set({ code, sha, codeAt: Date.now() });
     return code;
   } catch (e) {
     console.warn('[MerchPilot] Laden fehlgeschlagen, nutze letzte Version', e);
-    return (await chrome.storage.local.get('code')).code || '';
+    return st.code || '';
   }
 }
 
