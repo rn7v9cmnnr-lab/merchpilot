@@ -45,7 +45,7 @@
   "id": "b1-02",
   "n": 2,
   "niche": "Padel",
-  "mkt": "DE, US",
+  "mkt": "DE",
   "title": "Vibora Smash Repeat Padel Spieler Lustig",
   "brand": "Padel Court Club",
   "bullet1": "Lustiges Padel Motiv für Padelspieler, die jede Runde auf dem Court lieben – vom Lob bis zum Smash.",
@@ -75,12 +75,10 @@
   },
   "products": {
    "STANDARD_TSHIRT": [
-    "DE",
-    "US"
+    "DE"
    ],
    "STANDARD_PULLOVER_HOODIE": [
-    "DE",
-    "US"
+    "DE"
    ]
   },
   "translate": false
@@ -251,7 +249,7 @@
   "id": "b1-07",
   "n": 7,
   "niche": "Bouldern",
-  "mkt": "DE, US",
+  "mkt": "DE",
   "title": "Chalk Crimp Repeat Bouldern Klettern Lustig",
   "brand": "Boulderhalle Crew",
   "bullet1": "Lustiges Bouldern Motiv für Boulderer und Kletterer, die ihr Projekt nicht loslassen.",
@@ -281,12 +279,10 @@
   },
   "products": {
    "STANDARD_TSHIRT": [
-    "DE",
-    "US"
+    "DE"
    ],
    "STANDARD_PULLOVER_HOODIE": [
-    "DE",
-    "US"
+    "DE"
    ]
   },
   "translate": false
