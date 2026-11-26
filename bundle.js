@@ -601,12 +601,14 @@ window.__MP_FONTS={
       'Ziel: ≥ 1 Verkauf je Nische bis 21.12.',
       'Werbung Mo + Do auswerten: Suchbegriff mit Verkauf → exakt ernten; ≥ 10 Klicks ohne Verkauf → negativ',
       'Keine neuen Designs in einer Nische, bevor ihre ersten 14 Tage Daten vorliegen',
-      'Neue Uploads gehen in Pipeline-Nischen (max. 12 pro Nische als Test)'] },
+      'Neue Uploads gehen in Pipeline-Nischen (max. 12 pro Nische als Test)',
+      'Produkttest: 25 der 50 Designs zusätzlich als Pullover-Hoodie DE (36,99 € ≈ 5,03 €) – gleiche Motive, sauberer Vergleich; kostet keine Design-Slots'] },
     mittel: { bis: GATE1, titel: 'Mittelfristig – Gate 1 (4.1.2027)', regeln: [
       'Score = Verkäufe ÷ Designs der Nische',
       '≥ 2 Verkäufe → Ausbauen: +12 Designs in den Formaten der Gewinner',
       '1 Verkauf → Halten: +6 Designs, Werbung nur exakt',
-      '0 Verkäufe und ≥ 30 Werbeklicks → Stoppen: keine neuen Designs, Platz für Pipeline-Nische'] },
+      '0 Verkäufe und ≥ 30 Werbeklicks → Stoppen: keine neuen Designs, Platz für Pipeline-Nische',
+      'Produkttest auswerten: Verkäufe je Design Hoodie vs. T-Shirt; Hoodie ≥ T-Shirt → Hoodie auf alle Designs der Nische, sonst nur Gewinner'] },
     lang: { bis: GATE2, titel: 'Langfristig – Gate 2 (24.1.) und dann quartalsweise', regeln: [
       '≥ 15 Verkäufe / Quartal → Kernnische: Hoodie/Sweatshirt + UK/FR/IT/ES',
       '3–14 Verkäufe / Quartal → Halten, 10 neue Designs / Quartal',
