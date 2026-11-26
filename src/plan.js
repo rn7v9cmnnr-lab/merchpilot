@@ -115,7 +115,7 @@
     view.innerHTML = `
       <div class="mp-grid2" style="grid-template-columns:1.2fr 1fr;margin-bottom:12px">
         <div class="mp-card"><div class="mp-l">Royalty je Verkaufspreis – T-Shirt Amazon.de</div>${curve(p)}
-          <div class="muted">Gemessen im Merch-Formular am ${esc(s.pricing.measured)}. +1 € Preis = +0,63 € Royalty.</div></div>
+          <div class="muted">Gemessen im Merch-Formular, ${esc(s.pricing.measured)}. +1 € Preis = +0,63 € Royalty.</div></div>
         <div class="mp-card"><div class="mp-l">Preisregeln</div><ol class="mp-list">${s.pricing.rules.map((r) => `<li>${esc(r)}</li>`).join('')}</ol>
           <table style="margin-top:10px"><tr><th>Preis</th><th class="n">Royalty</th><th class="n">Anteil</th></tr>
           ${p.points.map((q) => `<tr style="${q[0] === p.rec ? 'font-weight:700;background:#eaf6f0' : ''}"><td>${q[0].toFixed(2).replace('.', ',')} €</td><td class="n">${q[1].toFixed(2).replace('.', ',')} €</td><td class="n">${Math.round((q[1] / q[0]) * 100)} %</td></tr>`).join('')}</table></div>
