@@ -379,12 +379,12 @@ window.__MP_FONTS={
 
   // 2x2: Nachfrage (y) gegen Wettbewerb (x)
   function matrix(niches) {
-    const W = 560, H = 360, L = 50, T = 20, R = 20, B = 44, iw = W - L - R, ih = H - T - B;
+    const W = 560, H = 360, L = 60, T = 20, R = 20, B = 44, iw = W - L - R, ih = H - T - B;
     const x = (v) => L + (v / 10) * iw, y = (v) => T + ih - (v / 10) * ih;
     const dots = niches.map((n) => {
       const r = 8 + (n.designs || 0) * 1.1;
       return `<g><circle cx="${x(n.competition)}" cy="${y(n.demand)}" r="${r}" fill="${PRIO[n.prio]}" fill-opacity="${n.prio === 'C' ? 0.25 : 0.85}"><title>${esc(n.name)}: Nachfrage ${n.demand}/10, Wettbewerb ${n.competition}/10, ${n.designs} Designs</title></circle>
-        <text x="${n.competition > 6 ? x(n.competition) - r - 6 : x(n.competition) + r + 6}" text-anchor="${n.competition > 6 ? 'end' : 'start'}" y="${y(n.demand) + 4}" font-size="12" fill="#1d2330" font-weight="${n.prio === 'C' ? 400 : 600}">${esc(n.name)}</text></g>`;
+        ${n.prio === 'C' ? '' : `<text x="${n.competition > 6 ? x(n.competition) - r - 6 : x(n.competition) + r + 6}" text-anchor="${n.competition > 6 ? 'end' : 'start'}" y="${y(n.demand) + 4}" font-size="12" fill="#1d2330" font-weight="600">${esc(n.name)}</text>`}</g>`;
     }).join('');
     return `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Nischen nach Nachfrage und Wettbewerb">
       <rect x="${L}" y="${T}" width="${iw / 2}" height="${ih / 2}" fill="#0a7d5a" fill-opacity=".07"/>
@@ -457,7 +457,7 @@ window.__MP_FONTS={
       <div class="mp-card" style="margin-bottom:12px"><div class="mp-l">Fahrplan</div>${timeline(s)}</div>
       <div class="mp-grid2" style="grid-template-columns:1.2fr 1fr;margin-bottom:12px">
         <div class="mp-card"><div class="mp-l">Nischen: Nachfrage gegen Wettbewerb (Amazon.de, Stand ${day(s.updated)})</div>${matrix(s.niches)}
-          <div class="muted">Kreisgröße = Anzahl Designs · <span style="color:${PRIO.A}">● A</span> zuerst · <span style="color:${PRIO.B}">● B</span> danach · <span style="color:${PRIO.C}">● C</span> nicht bespielen</div></div>
+          <div class="muted">Kreisgröße = Anzahl Designs · <span style="color:${PRIO.A}">● A</span> zuerst · <span style="color:${PRIO.B}">● B</span> danach · <span style="color:${PRIO.C}">● C</span> nicht bespielen: ${esc(s.niches.filter((n) => n.prio === 'C').map((n) => n.name).join(', '))}</div></div>
         <div class="mp-card"><div class="mp-l">Design-Typen</div>
           ${s.designTypes.map((d) => `<div class="mp-step"><div class="mp-pill2">${esc(d.phase)}</div><div><b>${esc(d.type)}</b> <span class="muted">· ${esc(d.cost)} · ${esc(d.status)}</span><div class="muted">${esc(d.note)}</div></div></div>`).join('')}
           <div class="mp-l" style="margin-top:14px">Nischen-Pipeline (wöchentlich 2 prüfen)</div>
