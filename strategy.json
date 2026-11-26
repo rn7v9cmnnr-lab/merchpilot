@@ -371,5 +371,75 @@
    "status": "prüfen"
   }
  ],
- "parked": "16 Designs geparkt (Foil US, Padel UK/US, Vovinam) – Phase 2"
+ "parked": "16 Designs geparkt (Foil US, Padel UK/US, Vovinam) – Phase 2",
+ "season": {
+  "regel": "Saison-Designs 6–8 Wochen vor dem Anlass hochladen (Indexierung + Werbung brauchen Vorlauf).",
+  "kalender": [
+   {
+    "anlass": "Darts-WM (11.12.–3.1.)",
+    "upload_bis": "2026-11-30",
+    "status": "Batch 3 (Darts 13)"
+   },
+   {
+    "anlass": "Weihnachten",
+    "upload_bis": "2026-11-30",
+    "status": "alle Nischen; Lieferfrist ~21.12."
+   },
+   {
+    "anlass": "Handball-WM in Deutschland (13.–31.1.2027)",
+    "upload_bis": "2026-12-10",
+    "status": "Batch 3 (Handball 13) – ohne Event-/Verbandsnamen"
+   },
+   {
+    "anlass": "Eishockey-Saison / Winter",
+    "upload_bis": "2026-12-15",
+    "status": "Batch 4 (Eishockey 13)"
+   },
+   {
+    "anlass": "Karneval (Weiberfastnacht 4.2., Rosenmontag 8.2.2027)",
+    "upload_bis": "2026-12-20",
+    "status": "geplant: Kostüm-Shirts (faul, lustig), Vereins-/Gruppenshirts"
+   },
+   {
+    "anlass": "Valentinstag 14.2.2027",
+    "upload_bis": "2026-12-31",
+    "status": "geplant: Paar-Shirts in bestehenden Nischen"
+   },
+   {
+    "anlass": "Ostern 28.3.2027",
+    "upload_bis": "2027-02-10",
+    "status": "optional"
+   },
+   {
+    "anlass": "Vatertag/Himmelfahrt 6.5.2027",
+    "upload_bis": "2027-03-15",
+    "status": "geplant: Vatertagstour-Gruppenshirts + „Papa“-Varianten aller Gewinner-Nischen"
+   },
+   {
+    "anlass": "Muttertag 9.5.2027",
+    "upload_bis": "2027-03-15",
+    "status": "geplant: „Mama“-Varianten der Gewinner"
+   },
+   {
+    "anlass": "Schützenfest-Saison (Mai–Aug)",
+    "upload_bis": "2027-03-31",
+    "status": "Pipeline Schützenverein"
+   },
+   {
+    "anlass": "Oktoberfest (Sep 2027)",
+    "upload_bis": "2027-07-31",
+    "status": "geplant: Trachten-/Wiesn-Shirts (ohne geschützte Namen)"
+   }
+  ]
+ },
+ "pipeline_status": {
+  "Darts": "Batch 3",
+  "Handball": "Batch 3",
+  "Tischtennis": "Batch 3",
+  "Angeln": "Batch 3",
+  "Imker": "Batch 4",
+  "Modellbahn": "Batch 4",
+  "Eishockey": "Batch 4",
+  "Schach": "Batch 4"
+ }
 }

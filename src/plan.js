@@ -91,6 +91,9 @@
           <div style="margin-top:10px;display:flex;gap:18px"><div><div class="mp-l">Designs live</div><b>${done}</b></div><div><div class="mp-l">Nischen aktiv</div><b>${act.length}</b></div><div><div class="mp-l">Designs geplant</div><b>${act.reduce((a, n) => a + (n.designs || 0), 0)}</b></div></div></div>
       </div>
       <div class="mp-card" style="margin-bottom:12px"><div class="mp-l">Fahrplan</div>${timeline(s)}</div>
+      ${s.season ? `<div class="mp-card" style="margin-bottom:12px"><div class="mp-l">Saisonkalender · ${esc(s.season.regel)}</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin-top:6px">${s.season.kalender.map((k) => { const late = k.upload_bis < new Date().toISOString().slice(0, 10); const done = /Batch/.test(k.status);
+          return `<div style="border:1px solid #e3e6ea;border-left:4px solid ${done ? '#2a6' : late ? '#c44' : '#c90'};border-radius:8px;padding:8px;font-size:12px"><b>${esc(k.anlass)}</b><div class="muted">Upload bis ${esc(k.upload_bis.split('-').reverse().join('.'))}</div><div>${esc(k.status)}</div></div>`; }).join('')}</div></div>` : ''}
       <div class="mp-grid2" style="grid-template-columns:1.2fr 1fr;margin-bottom:12px">
         <div class="mp-card"><div class="mp-l">Nischen: Nachfrage gegen Wettbewerb (Amazon.de, Stand ${day(s.updated)})</div>${matrix(s.niches)}
           <div class="muted">Kreisgröße = Anzahl Designs · <span style="color:${PRIO.A}">● A</span> zuerst · <span style="color:${PRIO.B}">● B</span> danach · <span style="color:${PRIO.C}">● C</span> nicht bespielen: ${esc(s.niches.filter((n) => n.prio === 'C').map((n) => n.name).join(', '))}</div></div>
