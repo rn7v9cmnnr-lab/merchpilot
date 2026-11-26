@@ -162,7 +162,7 @@
    "phase": "Jetzt",
    "type": "Text-Designs",
    "cost": "0 €",
-   "status": "50 fertig",
+   "status": "34 fertig (DE)",
    "note": "Insider-Spruch trägt das Motiv; schnellster Test, welche Nische zieht."
   },
   {
@@ -254,7 +254,7 @@
    "from": "2026-11-30",
    "to": "2026-12-06",
    "items": [
-    "36 DE-Designs hochladen",
+    "34 DE-Designs hochladen",
     "Altbestand aufräumen"
    ]
   },
@@ -305,7 +305,7 @@
    "1 Produkt pro Design → bis 50 Designs pro Tag",
    "Eine Sprache, ein Keyword-Set, eine Auswertung"
   ],
-  "tradeoff": "Amazon.com ist rund 8-mal größer – US kommt erst als Phase 2, wenn DE funktioniert."
+  "tradeoff": "Amazon.com ist deutlich größer – US kommt erst als Phase 2, wenn DE funktioniert."
  },
  "pipeline": [
   {
@@ -341,5 +341,5 @@
    "status": "prüfen"
   }
  ],
- "parked": "14 Designs (Foil US, Padel UK/US, Vovinam FR/IT/ES) geparkt – Phase 2"
+ "parked": "16 Designs geparkt (Foil US, Padel UK/US, Vovinam) – Phase 2"
 }

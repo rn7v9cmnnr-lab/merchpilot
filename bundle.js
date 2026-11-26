@@ -380,7 +380,7 @@ window.__MP_FONTS={
     const dots = niches.map((n) => {
       const r = 8 + (n.designs || 0) * 1.1;
       return `<g><circle cx="${x(n.competition)}" cy="${y(n.demand)}" r="${r}" fill="${PRIO[n.prio]}" fill-opacity="${n.prio === 'C' ? 0.25 : 0.85}"><title>${esc(n.name)}: Nachfrage ${n.demand}/10, Wettbewerb ${n.competition}/10, ${n.designs} Designs</title></circle>
-        <text x="${x(n.competition) + r + 6}" y="${y(n.demand) + 4}" font-size="12" fill="#1d2330" font-weight="${n.prio === 'C' ? 400 : 600}">${esc(n.name)}</text></g>`;
+        <text x="${n.competition > 6 ? x(n.competition) - r - 6 : x(n.competition) + r + 6}" text-anchor="${n.competition > 6 ? 'end' : 'start'}" y="${y(n.demand) + 4}" font-size="12" fill="#1d2330" font-weight="${n.prio === 'C' ? 400 : 600}">${esc(n.name)}</text></g>`;
     }).join('');
     return `<svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="Nischen nach Nachfrage und Wettbewerb">
       <rect x="${L}" y="${T}" width="${iw / 2}" height="${ih / 2}" fill="#0a7d5a" fill-opacity=".07"/>
@@ -398,17 +398,20 @@ window.__MP_FONTS={
 
   // Zeitplan mit Heute-Linie und Gates
   function timeline(s) {
-    const W = 1100, L = 20, R = 20, iw = W - L - R, ph = s.roadmap;
-    const t0 = Date.parse(ph[0].from), t1 = Date.parse(ph.at(-1).to) + 864e5, X = (d) => L + ((Date.parse(d) - t0) / (t1 - t0)) * iw;
-    const now = Date.now(), nowX = L + ((now - t0) / (t1 - t0)) * iw;
-    const bands = ph.map((p, i) => { const x0 = X(p.from), x1 = X(p.to) + (iw / ((t1 - t0) / 864e5)); return `<g>
-      <rect x="${x0 + 2}" y="30" width="${x1 - x0 - 4}" height="92" rx="8" fill="#fff" stroke="#d5d9e0"/>
-      <text x="${x0 + 12}" y="52" font-size="13" font-weight="600" fill="#1d2330">${esc(p.name)}</text>
-      <text x="${x0 + 12}" y="68" font-size="11" fill="#667">${day(p.from)} – ${day(p.to)}</text>
-      ${p.items.map((it, k) => `<text x="${x0 + 12}" y="${90 + k * 16}" font-size="11.5" fill="#1d2330">${esc(it)}</text>`).join('')}</g>`; }).join('');
-    const gates = s.gates.map((g) => `<g><path d="M${X(g.date)} 128l8 8l-8 8l-8 -8z" fill="#2e6bd6"/><text x="${X(g.date)}" y="160" font-size="11" text-anchor="middle" fill="#1d2330" font-weight="600">${day(g.date)}</text><text x="${X(g.date)}" y="174" font-size="11" text-anchor="middle" fill="#667">${esc(g.rule)}</text></g>`).join('');
-    const today = now >= t0 && now <= t1 ? `<line x1="${nowX}" y1="22" x2="${nowX}" y2="150" stroke="#e94b3c" stroke-width="2"/><text x="${nowX}" y="16" font-size="11" fill="#e94b3c" text-anchor="middle" font-weight="600">heute</text>` : `<text x="${L}" y="16" font-size="11" fill="#e94b3c">Start am ${day(ph[0].from)}</text>`;
-    return `<svg viewBox="0 0 ${W} 184" width="100%" role="img" aria-label="Fahrplan 8 Wochen">${bands}${gates}${today}</svg>`;
+    const W = 1100, L = 10, gap = 12, ph = s.roadmap, n = ph.length, bw = (W - 2 * L - gap * (n - 1)) / n;
+    const bx = (i) => L + i * (bw + gap);
+    const now = Date.now();
+    const bands = ph.map((p, i) => { const cur = now >= Date.parse(p.from) && now < Date.parse(p.to) + 864e5; return `<g>
+      <rect x="${bx(i)}" y="10" width="${bw}" height="96" rx="10" fill="${cur ? '#eaf6f0' : '#fff'}" stroke="${cur ? '#0a7d5a' : '#d5d9e0'}" stroke-width="${cur ? 2 : 1}"/>
+      <text x="${bx(i) + 14}" y="34" font-size="14" font-weight="700" fill="#1d2330">${i + 1}. ${esc(p.name)}</text>
+      <text x="${bx(i) + 14}" y="52" font-size="12" fill="#667">${day(p.from)} – ${day(p.to)}</text>
+      ${p.items.map((it, k) => `<text x="${bx(i) + 14}" y="${74 + k * 17}" font-size="12.5" fill="#1d2330">• ${esc(it)}</text>`).join('')}</g>`; }).join('');
+    const gx = (g) => { const k = ph.findIndex((p) => g.date <= p.to); return k < 0 ? W - L : bx(k) + bw; };
+    const gates = s.gates.map((g, i) => { const x = gx(g), last = x > W - 60; return `<g><path d="M${x - (last ? 10 : 0)} 112l9 9l-9 9l-9 -9z" fill="#2e6bd6"/>
+      <text x="${last ? x : x}" y="148" font-size="12" text-anchor="${last ? 'end' : 'middle'}" fill="#1d2330" font-weight="700">Gate ${i + 1} · ${day(g.date)}</text>
+      <text x="${x}" y="164" font-size="12" text-anchor="${last ? 'end' : 'middle'}" fill="#667">${esc(g.rule)}</text></g>`; }).join('');
+    const start = Date.parse(ph[0].from) > now ? `<text x="${W - L}" y="182" font-size="11" fill="#667" text-anchor="end">Start am ${day(ph[0].from)}</text>` : '';
+    return `<svg viewBox="0 0 ${W} 188" width="100%" role="img" aria-label="Fahrplan 8 Wochen">${bands}${gates}${start}</svg>`;
   }
 
   // Royalty-Kurve DE
