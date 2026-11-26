@@ -212,20 +212,25 @@
   }
   async function selectProducts(products) {
     const modal = () => $('.modal.show');
-    const btn = (txt) => [...(modal()?.querySelectorAll('button') || [])].find((b) => b.innerText.trim() === txt);
+    const btn = (txt) => [...(modal()?.querySelectorAll('button,a') || [])].find((b) => b.innerText.trim() === txt);
+    const checked = () => [...modal().querySelectorAll('flowcheckbox')].filter((f) => f.querySelector('input')?.checked).map((f) => f.className.split(' ')[0]);
     $('#select-marketplace-button-original').click();
     await waitFor(() => btn('Continue'));
-    btn('Deselect All')?.click(); await sleep(800);
-    let want = 0;
+    (btn('None') || btn('Deselect All'))?.click(); await sleep(800);
+    if (checked().length) { for (const c of checked()) { modal().querySelector(`flowcheckbox.${c}`)?.click(); await sleep(150); } }
+    const want = [];
     for (const [type, mkts] of Object.entries(products)) for (const mk of mkts) {
       const el = $(`.modal.show flowcheckbox.${type}-${mk}`); // Angular rendert neu -> jedes Mal frisch suchen
       if (!el) throw new Error(`Produkt/Markt nicht verfügbar: ${type}-${mk}`);
-      el.click(); want++; await sleep(500);
+      el.click(); want.push(`${type}-${mk}`); await sleep(500);
     }
-    const sel = +((modal().innerText.match(/(\d+) Selected/) || [])[1] || 0);
-    if (sel !== want) throw new Error(`Produktauswahl ${sel} statt ${want}`);
+    const got = checked();
+    if (got.sort().join() !== want.sort().join()) throw new Error(`Produktauswahl ${got.join(',') || 'leer'} statt ${want.join(',')}`);
     btn('Continue').click();
     await waitFor(() => !modal());
+    await sleep(800);
+    const lim = [...document.querySelectorAll('.alert')].find((e) => /daily limit/i.test(e.innerText));
+    if (lim) throw new Error('Amazon-Tageslimit-Hinweis: ' + lim.innerText.trim().slice(0, 120));
   }
   // Produkt-Editor (Farben/Preis) öffnen, falls zu
   async function openEditor() {
@@ -307,15 +312,19 @@
     if (!item) { ls.set('resume', false); return log('Warteschlange leer.'); }
     if (usedToday() + productCount(item.products || c.products) > c.dailyProductLimit) { ls.set('resume', false); return log(`Tageslimit erreicht (${usedToday()}/${c.dailyProductLimit}).`); }
     if (max <= 0) { ls.set('resume', false); return; }
+    ls.set('resume', true);
     log('Lade hoch:', item.title);
     try {
       const r = await fillAndPublish(item, { dryRun });
       if (dryRun) return log(r);
-      item.status = 'done'; item.published = new Date().toISOString(); addUsage(productCount(item.products || c.products));
-    } catch (e) { item.status = 'error'; item.error = String(e.message || e); log('Fehler:', item.error); }
+      item.status = 'done'; item.published = new Date().toISOString(); addUsage(productCount(item.products || c.products)); ls.set('errStreak', 0);
+    } catch (e) { item.status = 'error'; item.error = String(e.message || e); log('Fehler:', item.error); ls.set('errStreak', (ls.get('errStreak', 0) || 0) + 1); }
     saveQueue(q);
-    ls.set('resume', true); ls.set('resumeMax', max - 1);
+    if (ls.get('errStreak', 0) >= 2) { ls.set('resume', false); ls.set('errStreak', 0); return log('Gestoppt: 2 Fehler in Folge – bitte prüfen.'); }
+    if (ls.get('resume') === false) return log('Gestoppt.');
+    ls.set('resumeMax', max - 1);
     await sleep(rnd(...c.delaySec) * 1000);
+    if (ls.get('resume') === false) return log('Gestoppt.');
     location.href = '/designs/new';
   }
 
@@ -363,7 +372,7 @@
     };
   })();
 
-  window.MerchPilot = { version: '0.7.0', imgGet, imgPut, imgKeys, importInput, apiCapture: () => ls.get('apiCapture', []), lint: (it) => window.__MP_LINT(it, cfg().lintExtra || []), stats, monthly, sales, designs, cleanupCandidates, render, enqueue, queue, saveQueue, run, fillAndPublish, setColors, setPrices, config: (c) => (c ? ls.set('cfg', { ...ls.get('cfg', {}), ...c }) : cfg()), usedToday };
+  window.MerchPilot = { version: '0.7.1', imgGet, imgPut, imgKeys, importInput, apiCapture: () => ls.get('apiCapture', []), lint: (it) => window.__MP_LINT(it, cfg().lintExtra || []), stats, monthly, sales, designs, cleanupCandidates, render, enqueue, queue, saveQueue, run, fillAndPublish, setColors, setPrices, config: (c) => (c ? ls.set('cfg', { ...ls.get('cfg', {}), ...c }) : cfg()), usedToday };
   ui.mount();
   importInput();
 
