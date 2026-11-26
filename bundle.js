@@ -24,7 +24,7 @@ window.__MP_FONTS={
     { re: /\b(bequem|comfort\w*|weich|soft)\b/i, lvl: 'warn', why: 'Produkteigenschaft statt Design' },
     { re: /\b(öko|eco[- ]?friendly|nachhaltig|sustainable|bio)\b/i, lvl: 'warn', why: 'Umweltaussage' },
     { re: /\b(neon|glow|leuchtet|im dunkeln)\b/i, lvl: 'warn', why: 'klingt nach Shirt-Eigenschaft' },
-    { re: /\b(geschenk\w*|gift\w*)\b/i, lvl: 'warn', why: 'wird laut Händlerberichten teils als Werbung gewertet' },
+    { re: /(geschenk|gift|präsent|schenk)/i, lvl: 'error', why: 'Geschenk-Hinweise im Listing nicht erlaubt (Merch-Richtlinie)' },
     // Grobe Schimpfwörter / heikle Inhalte
     { re: /\b(fuck\w*|shit|bitch|arsch\w*|scheiß\w*|fick\w*|hure|nazi|hitler|drogen|cocaine|kokain|weed|gras rauchen)\b/i, lvl: 'error', why: 'Schimpfwort / unzulässiger Inhalt' },
   ];
