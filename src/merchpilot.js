@@ -13,7 +13,10 @@
     dailyProductLimit: 50,   // Amazon zählt Produkt × Marktplatz
     delaySec: [45, 120],     // menschliches Tempo zwischen Uploads
     searchable: true,
-    translate: true,
+    translate: false,        // nur Amazon.de, Listing ist bereits deutsch
+    colors: ['black', 'navy', 'asphalt', 'dark_heather'], // helle Motive → dunkle Shirts
+    prices: { DE: 19.99 },   // Startpreis laut Preisstrategie
+    minRoyalty: 3.5,         // Sicherheitsnetz: nie unter 3,50 € Tantieme veröffentlichen
   };
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   const rnd = (a, b) => a + Math.random() * (b - a);
@@ -224,6 +227,37 @@
     btn('Continue').click();
     await waitFor(() => !modal());
   }
+  // Produkt-Editor (Farben/Preis) öffnen, falls zu
+  async function openEditor() {
+    if (document.querySelector('colorcheckbox')) return;
+    const card = [...document.querySelectorAll('*')].filter((e) => e.children.length < 12 && /^Standard t-shirt\s*Edit details/i.test(e.innerText.trim())).pop();
+    const b = card && [...card.querySelectorAll('button,a')].find((x) => /Edit details/i.test(x.innerText));
+    if (b) b.click();
+    await waitFor(() => document.querySelector('colorcheckbox'), 15000);
+  }
+  async function setColors(colors) {
+    await openEditor();
+    for (const c of document.querySelectorAll('colorcheckbox')) {
+      const name = c.className.split(' ')[0].replace('-checkbox', '');
+      const inp = c.querySelector('input');
+      if (inp.checked !== colors.includes(name)) { (c.querySelector('span') || c).click(); await sleep(250); }
+    }
+    const on = [...document.querySelectorAll('colorcheckbox')].filter((c) => c.querySelector('input').checked).map((c) => c.className.split(' ')[0].replace('-checkbox', ''));
+    if (on.sort().join() !== [...colors].sort().join()) throw new Error('Farben: ' + on.join(',') + ' statt ' + colors.join(','));
+  }
+  const DOMAIN = { DE: '.de', US: '.com', UK: '.co.uk', FR: '.fr', IT: '.it', ES: '.es', JP: '.co.jp' };
+  const rowOf = (i) => { let a = i; for (let k = 0; k < 6; k++) a = a.parentElement; return a; };
+  async function setPrices(prices) {
+    await openEditor();
+    const res = {};
+    for (const [mk, price] of Object.entries(prices)) {
+      const inp = [...document.querySelectorAll('input[formcontrolname=amount]')].find((i) => rowOf(i).innerText.includes(DOMAIN[mk] + ' '));
+      if (!inp) throw new Error('Preisfeld fehlt: ' + mk);
+      setVal(inp, Number(price).toFixed(2)); await sleep(1200);
+      res[mk] = +((rowOf(inp).innerText.match(/([\d.,]+)\s*Estimated royalty/) || [])[1] || '0').replace(',', '.');
+    }
+    return res; // geschätzte Tantieme je Markt
+  }
   async function fillAndPublish(item, { dryRun = false } = {}) {
     const c = cfg();
     const l = window.__MP_LINT ? window.__MP_LINT(item, c.lintExtra || []) : { ok: true, issues: [] };
@@ -232,6 +266,10 @@
     if (!blob) throw new Error('Bild fehlt in der Ablage: ' + item.imageKey);
     await dropArtwork(blob);
     await selectProducts(item.products || c.products);
+    await setColors(item.colors || c.colors);
+    const roy = await setPrices(item.prices || c.prices);
+    item.royalty = roy;
+    for (const [mk, r] of Object.entries(roy)) if (r < (c.minRoyalty || 0)) throw new Error(`Tantieme ${mk} ${r} < Minimum ${c.minRoyalty}`);
     if (item.translate ?? c.translate) $('#translation-request-yes')?.click(); else $('#translation-request-no')?.click();
     await sleep(500);
     setVal($('#designCreator-productEditor-title'), item.title.slice(0, 60));
@@ -325,7 +363,7 @@
     };
   })();
 
-  window.MerchPilot = { version: '0.6.0', imgGet, imgPut, imgKeys, importInput, apiCapture: () => ls.get('apiCapture', []), lint: (it) => window.__MP_LINT(it, cfg().lintExtra || []), stats, monthly, sales, designs, cleanupCandidates, render, enqueue, queue, saveQueue, run, fillAndPublish, config: (c) => (c ? ls.set('cfg', { ...ls.get('cfg', {}), ...c }) : cfg()), usedToday };
+  window.MerchPilot = { version: '0.7.0', imgGet, imgPut, imgKeys, importInput, apiCapture: () => ls.get('apiCapture', []), lint: (it) => window.__MP_LINT(it, cfg().lintExtra || []), stats, monthly, sales, designs, cleanupCandidates, render, enqueue, queue, saveQueue, run, fillAndPublish, setColors, setPrices, config: (c) => (c ? ls.set('cfg', { ...ls.get('cfg', {}), ...c }) : cfg()), usedToday };
   ui.mount();
   importInput();
 
