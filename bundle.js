@@ -65,7 +65,7 @@ window.__MP_FONTS={
     // Amazon-Produktschlüssel × Marktplatz (US, GB, DE, FR, IT, ES, JP) – jede Kombination zählt 1 aufs Tageslimit
     products: { STANDARD_TSHIRT: ['DE'] }, // Fokus: nur T-Shirt auf Amazon.de
     dailyProductLimit: 50,   // Amazon zählt Produkt × Marktplatz
-    delaySec: [45, 120],     // menschliches Tempo zwischen Uploads
+    delaySec: [10, 25],      // Pause zwischen Uploads
     searchable: true,
     translate: false,        // nur Amazon.de, Listing ist bereits deutsch
     colors: ['black', 'navy', 'asphalt', 'dark_heather'], // helle Motive → dunkle Shirts
@@ -351,10 +351,10 @@ window.__MP_FONTS={
     if (confirm) confirm.click();
     // Erfolg prüfen: Design taucht in der eigenen Designliste auf
     const t = norm(item.title).slice(0, 30);
-    await sleep(5000);
-    for (let k = 0; k < 12; k++) {
+    await sleep(2500);
+    for (let k = 0; k < 20; k++) {
       if ((await designs()).some((d) => norm(d.title).startsWith(t))) return 'published';
-      await sleep(5000);
+      await sleep(3000);
     }
     throw new Error('Veröffentlichung nicht bestätigt – bitte in Manage prüfen');
   }
@@ -426,7 +426,7 @@ window.__MP_FONTS={
     };
   })();
 
-  window.MerchPilot = { version: '0.7.1', imgGet, imgPut, imgKeys, importInput, apiCapture: () => ls.get('apiCapture', []), lint: (it) => window.__MP_LINT(it, cfg().lintExtra || []), stats, monthly, sales, designs, cleanupCandidates, render, enqueue, queue, saveQueue, run, fillAndPublish, setColors, setPrices, config: (c) => (c ? ls.set('cfg', { ...ls.get('cfg', {}), ...c }) : cfg()), usedToday };
+  window.MerchPilot = { version: '0.7.2', imgGet, imgPut, imgKeys, importInput, apiCapture: () => ls.get('apiCapture', []), lint: (it) => window.__MP_LINT(it, cfg().lintExtra || []), stats, monthly, sales, designs, cleanupCandidates, render, enqueue, queue, saveQueue, run, fillAndPublish, setColors, setPrices, config: (c) => (c ? ls.set('cfg', { ...ls.get('cfg', {}), ...c }) : cfg()), usedToday };
   ui.mount();
   importInput();
 
