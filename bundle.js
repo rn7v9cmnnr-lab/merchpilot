@@ -305,7 +305,7 @@ window.__MP_FONTS={
     await openEditor();
     const res = {};
     for (const [mk, price] of Object.entries(prices)) {
-      const inp = [...document.querySelectorAll('input[formcontrolname=amount]')].find((i) => rowOf(i).innerText.includes(DOMAIN[mk] + ' '));
+      const inp = [...document.querySelectorAll('input[formcontrolname=amount]')].find((i) => new RegExp(DOMAIN[mk].replace(/\./g, '\\.') + '(\\s|$)').test(rowOf(i).innerText));
       if (!inp) throw new Error('Preisfeld fehlt: ' + mk);
       setVal(inp, Number(price).toFixed(2)); await sleep(1200);
       res[mk] = +((rowOf(inp).innerText.match(/([\d.,]+)\s*Estimated royalty/) || [])[1] || '0').replace(',', '.');
