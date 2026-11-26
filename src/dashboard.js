@@ -131,37 +131,64 @@
   }
 
   // ---------- Warteschlange ----------
+  let qFilter = 'review';
   async function queue() {
-    const q = MP.queue();
+    const all = MP.queue();
+    const cnt = (s) => all.filter((x) => x.status === s).length;
+    const q = all.filter((x) => (qFilter === 'all' ? true : x.status === qFilter));
     const pill = (s) => `<span class="pill ${s === 'done' ? 'ok' : s === 'error' ? 'err' : 'wait'}">${{ review: 'zur Freigabe', parked: 'geparkt', pending: 'freigegeben', done: 'hochgeladen', error: 'Fehler', blocked: 'gesperrt (Prüfung)' }[s] || s}</span>`;
-    view.innerHTML = `<div class="mp-card">
-      <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
-        <b>${q.filter((x) => x.status === 'pending').length} wartend</b><span class="muted">· ${q.filter((x) => x.status === 'review').length} zur Freigabe · ${q.filter((x) => x.status === 'parked').length} geparkt · Limit ${MP.config().dailyProductLimit} Produkte/Tag</span>
+    const tabs = [['review', 'Zur Freigabe'], ['pending', 'Freigegeben'], ['done', 'Hochgeladen'], ['error', 'Fehler'], ['blocked', 'Gesperrt'], ['parked', 'Geparkt'], ['all', 'Alle']];
+    const niches = [...new Set(q.map((x) => x.niche || '–'))];
+    const card = (x) => {
+      const b = x.brief || {}; const pr = x.prices ? Object.entries(x.prices).map(([m, v]) => `${m} ${String(v).replace('.', ',')} €`).join(', ') : '';
+      return `<div class="qc ${x.status}">
+        <canvas class="qimg" data-p="${x.id}" width="200" height="240"></canvas>
+        <div class="qb"><div class="qt">${esc(x.title)}</div><div class="muted">${esc(x.brand)} · ${esc(x.id)}</div>
+        ${b.ziel ? `<div class="qr"><span>Ziel</span>${esc(b.ziel)}</div>` : ''}
+        ${b.zielgruppe ? `<div class="qr"><span>Zielgruppe</span>${esc(b.zielgruppe)}</div>` : ''}
+        ${b.anlass ? `<div class="qr"><span>Anlass</span>${esc(b.anlass)}</div>` : ''}
+        ${pr ? `<div class="qr"><span>Preis</span>${esc(b.preis || pr)}</div>` : ''}
+        ${b.werbung ? `<div class="qr"><span>Werbung</span>${esc(b.werbung)}</div>` : ''}
+        ${x.colors ? `<div class="qr"><span>Farben</span>${x.colors.map((c) => `<i class="sw sw-${c}" title="${c}"></i>`).join('')}</div>` : ''}
+        ${b.markencheck ? `<div class="qr"><span>Marke</span>${esc(b.markencheck)}</div>` : ''}
+        <details><summary class="muted">Listing</summary><div class="muted">• ${esc(x.bullet1 || '')}<br>• ${esc(x.bullet2 || '')}<br>${esc(x.description || '')}</div></details>
+        ${x.error ? `<div class="pill err">${esc(x.error)}</div>` : ''}${(x.lint || []).map((i) => `<div class="pill ${i.lvl === 'error' ? 'err' : 'wait'}">${esc(i.field)}: ${esc(i.word || '')} – ${esc(i.why)}</div>`).join(' ')}
+        <div class="qa">${pill(x.status)}<span style="flex:1"></span>${x.status === 'review' ? `<button class="btn" data-ok="${x.id}">✓ Freigeben</button><button class="btn sec" data-park="${x.id}">Parken</button>` : ''}${x.status === 'parked' ? `<button class="btn sec" data-rev="${x.id}">Zur Freigabe</button>` : ''}${x.status === 'pending' ? `<button class="btn sec" data-rev="${x.id}">Zurück</button>` : ''}</div></div></div>`;
+    };
+    view.innerHTML = `<style>
+      .qg{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:10px}
+      .qc{display:flex;gap:10px;background:#fff;border:1px solid #e3e6ea;border-radius:10px;padding:10px}
+      .qc.pending{border-color:#2a6}.qimg{border-radius:8px;flex:none;width:150px;height:180px;background:#1f2024}
+      .qb{flex:1;min-width:0;font-size:12px}.qt{font-weight:600;font-size:13px;margin-bottom:2px}
+      .qr{display:flex;gap:6px;margin-top:3px}.qr span{flex:none;width:70px;color:#889}
+      .qa{display:flex;gap:6px;align-items:center;margin-top:8px}.qn{margin:14px 0 6px;font-weight:600}
+      .sw{display:inline-block;width:14px;height:14px;border-radius:50%;margin-right:3px;border:1px solid #ccc}
+      .sw-black{background:#111}.sw-navy{background:#1f2a44}.sw-asphalt{background:#3d4148}.sw-dark_heather{background:#4a4b4f}.sw-royal{background:#2a4fb0}
+      .qtabs button{margin-right:4px}</style>
+      <div class="mp-card">
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <b>${cnt('review')} zur Freigabe</b><span class="muted">· ${cnt('pending')} freigegeben · heute ${MP.usedToday()}/${MP.config().dailyProductLimit} Produkte genutzt</span>
         <span style="flex:1"></span>
-        <button class="btn sec" id="mp-approve">✓ Alle zur Freigabe freigeben (${q.filter((x) => x.status === 'review').length})</button>
-        <button class="btn" id="mp-run">▶ Jetzt starten</button>
-        <button class="btn sec" id="mp-retry">Fehler erneut</button>
-        <button class="btn sec" id="mp-clear">Erledigte entfernen</button></div>
-      <table><tr><th></th><th>Titel</th><th>Marke</th><th>Status</th><th></th></tr>
-      ${q.slice().reverse().map((x) => `<tr><td><canvas class="thumb" data-p="${x.id}" width="90" height="108"></canvas></td>
-        <td>${esc(x.title)}<div class="muted">${esc(x.niche || '')}</div>${x.error ? `<div class="pill err">${esc(x.error)}</div>` : ''}${(x.lint || []).map((i) => `<div class="pill ${i.lvl === 'error' ? 'err' : 'wait'}">${esc(i.field)}: ${esc(i.word || '')} – ${esc(i.why)}</div>`).join(' ')}</td>
-        <td>${esc(x.brand)}</td><td>${pill(x.status)}</td><td>${x.status === 'review' ? `<button class="btn" data-ok="${x.id}">✓</button> ` : ''}<button class="btn sec" data-rm="${x.id}">✕</button></td></tr>`).join('') || '<tr><td colspan=5 class="muted">Leer – im Chat „neue Designs“ schreiben.</td></tr>'}</table></div>
-      <div class="mp-card" style="margin-top:12px"><div class="mp-l">JSON importieren (Liste von Designs)</div>
-      <textarea id="mp-json" rows="4" placeholder='[{"title":"…","brand":"…","bullet1":"…","bullet2":"…","description":"…","spec":{"lines":[{"text":"…","font":"Anton","size":600,"color":"#fff"}]}}]'></textarea>
-      <button class="btn sec" id="mp-imp" style="margin-top:6px">Importieren</button></div>`;
-    view.querySelector('#mp-run').onclick = () => MP.run();
+        <button class="btn sec" id="mp-approve">✓ Alle freigeben (${cnt('review')})</button>
+        <button class="btn" id="mp-run">▶ Freigegebene veröffentlichen (${cnt('pending')})</button>
+        <button class="btn sec" id="mp-retry">Fehler erneut</button></div>
+      <div class="qtabs" style="margin-top:8px">${tabs.map(([k, l]) => `<button class="btn ${qFilter === k ? '' : 'sec'}" data-f="${k}">${l} (${k === 'all' ? all.length : cnt(k)})</button>`).join('')}</div></div>
+      ${niches.map((n) => `<div class="qn">${esc(n)} · ${q.filter((x) => (x.niche || '–') === n).length}</div><div class="qg">${q.filter((x) => (x.niche || '–') === n).map(card).join('')}</div>`).join('') || '<div class="mp-card muted" style="margin-top:10px">Nichts in dieser Ansicht.</div>'}`;
+    const set = (id, st) => { MP.saveQueue(MP.queue().map((x) => (x.id === id ? { ...x, status: st } : x))); queue(); };
+    view.querySelectorAll('[data-f]').forEach((b) => (b.onclick = () => { qFilter = b.dataset.f; queue(); }));
+    view.querySelector('#mp-run').onclick = () => { if (!cnt('pending')) return alert('Noch nichts freigegeben.'); if (confirm(`${cnt('pending')} Designs jetzt auf Amazon veröffentlichen? Der Tab wechselt zum Upload-Formular und arbeitet die Liste ab.`)) MP.run(); };
     view.querySelector('#mp-approve').onclick = () => { MP.saveQueue(MP.queue().map((x) => (x.status === 'review' ? { ...x, status: 'pending' } : x))); queue(); };
-    view.querySelectorAll('[data-ok]').forEach((b) => (b.onclick = () => { MP.saveQueue(MP.queue().map((x) => (x.id === b.dataset.ok ? { ...x, status: 'pending' } : x))); queue(); }));
+    view.querySelectorAll('[data-ok]').forEach((b) => (b.onclick = () => set(b.dataset.ok, 'pending')));
+    view.querySelectorAll('[data-park]').forEach((b) => (b.onclick = () => set(b.dataset.park, 'parked')));
+    view.querySelectorAll('[data-rev]').forEach((b) => (b.onclick = () => set(b.dataset.rev, 'review')));
     view.querySelector('#mp-retry').onclick = () => { MP.saveQueue(MP.queue().map((x) => (x.status === 'error' ? { ...x, status: 'pending', error: null } : x))); queue(); };
-    view.querySelector('#mp-clear').onclick = () => { MP.saveQueue(MP.queue().filter((x) => x.status !== 'done')); queue(); };
-    view.querySelector('#mp-imp').onclick = () => { try { MP.enqueue(JSON.parse(view.querySelector('#mp-json').value)); queue(); } catch (e) { alert('JSON fehlerhaft: ' + e.message); } };
-    view.querySelectorAll('[data-rm]').forEach((b) => (b.onclick = () => { MP.saveQueue(MP.queue().filter((x) => x.id !== b.dataset.rm)); queue(); }));
-    // Vorschaubilder
     for (const c of view.querySelectorAll('canvas[data-p]')) {
       const it = q.find((x) => x.id === c.dataset.p); if (!it) continue;
-      const blob = it.imageKey ? await MP.imgGet(it.imageKey) : it.imageDataUrl ? await (await fetch(it.imageDataUrl)).blob() : it.spec ? await MP.render(it.spec) : null;
-      if (!blob) continue;
-      const img = await createImageBitmap(blob); const g = c.getContext('2d'); g.fillStyle = '#222'; g.fillRect(0, 0, 90, 108); g.drawImage(img, 0, 0, 90, 108);
+      try {
+        const blob = it.imageKey ? await MP.imgGet(it.imageKey) : it.imageDataUrl ? await (await fetch(it.imageDataUrl)).blob() : it.spec ? await MP.render(it.spec) : null;
+        if (!blob) continue;
+        const img = await createImageBitmap(blob, { resizeWidth: 200, resizeHeight: 240, resizeQuality: 'high' }); const g = c.getContext('2d'); g.fillStyle = '#1f2024'; g.fillRect(0, 0, 200, 240); g.drawImage(img, 0, 0, 200, 240);
+      } catch (e) { /* Vorschau optional */ }
     }
   }
 
