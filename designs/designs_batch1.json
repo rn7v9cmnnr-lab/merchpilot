@@ -1,0 +1,22 @@
+[
+ {"n":1,"niche":"Padel","mkt":"DE","lines":[["NUR NOCH","Anton",520,"#ffffff"],["EIN SATZ","Anton",520,"#ffffff"],["PADEL","Anton",900,"#c6f432"]]},
+ {"n":2,"niche":"Padel","mkt":"DE, US","lines":[["VIBORA","Bebas",820,"#ffffff"],["SMASH","Bebas",820,"#ffffff"],["REPEAT","Bebas",820,"#c6f432"]]},
+ {"n":3,"niche":"Padel","mkt":"DE","lines":[["Die Glaswand","Marker",430,"#ffffff"],["ist mein bester","Marker",430,"#ffffff"],["DOPPELPARTNER","Anton",520,"#c6f432"]]},
+ {"n":4,"niche":"Padel","mkt":"DE","lines":[["PADEL DAD","Anton",820,"#c6f432"],["wie normal,","Marker",380,"#ffffff"],["nur mit Bandeja","Marker",380,"#ffffff"]]},
+ {"n":5,"niche":"Bouldern","mkt":"DE","lines":[["NUR NOCH","Anton",700,"#ffffff"],["EIN VERSUCH","Anton",700,"#f5a623"]]},
+ {"n":6,"niche":"Bouldern","mkt":"DE","lines":[["Beta?","Anton",900,"#f5a623"],["Hab ich nicht","Marker",450,"#ffffff"],["gefragt.","Marker",450,"#ffffff"]]},
+ {"n":7,"niche":"Bouldern","mkt":"DE, US","lines":[["CHALK","Bebas",820,"#ffffff"],["CRIMP","Bebas",820,"#ffffff"],["REPEAT","Bebas",820,"#f5a623"]]},
+ {"n":8,"niche":"Bouldern","mkt":"DE","lines":[["MEIN PROJEKT","Anton",560,"#f5a623"],["ist schwerer","Marker",450,"#ffffff"],["als deins","Marker",450,"#ffffff"]]},
+ {"n":9,"niche":"Kegeln","mkt":"DE","lines":[["ALLE NEUNE","Anton",720,"#ffffff"],["ODER PUDEL","Anton",720,"#e94b3c"]]},
+ {"n":10,"niche":"Kegeln","mkt":"DE","lines":[["KEGELBRUDER","Anton",640,"#e94b3c"],["Kugel. Kranz. Bier.","Marker",420,"#ffffff"]]},
+ {"n":11,"niche":"Kegeln","mkt":"DE","lines":[["Ich bin nur","Marker",480,"#ffffff"],["zum KEGELN","Anton",700,"#e94b3c"],["hier","Marker",480,"#ffffff"]]},
+ {"n":12,"niche":"Doppelkopf","mkt":"DE","lines":[["RE.","Anton",760,"#ffffff"],["KONTRA.","Anton",760,"#ffffff"],["KEINE 90.","Anton",760,"#e94b3c"]]},
+ {"n":13,"niche":"Doppelkopf","mkt":"DE","lines":[["SOLO","Anton",900,"#e94b3c"],["spiel ich nur","Marker",440,"#ffffff"],["beim Doppelkopf","Marker",440,"#ffffff"]]},
+ {"n":14,"niche":"Skat","mkt":"DE","lines":[["18","Anton",520,"#ffffff"],["20","Anton",520,"#ffffff"],["ZWO","Anton",520,"#ffffff"],["DREI","Anton",520,"#ffffff"],["PASSE","Anton",620,"#e94b3c"]]},
+ {"n":15,"niche":"Schafkopf","mkt":"DE","lines":[["SAUSPIEL","Anton",760,"#ffffff"],["AUF DIE ALTE","Anton",620,"#3fa34d"]]},
+ {"n":16,"niche":"Vovinam","mkt":"FR","lines":[["VOVINAM","Anton",760,"#2e7bd6"],["VIET VO DAO","Bebas",620,"#ffffff"],["mon art martial","Marker",400,"#ffd23f"]]},
+ {"n":17,"niche":"Vovinam","mkt":"IT","lines":[["VOVINAM","Anton",760,"#2e7bd6"],["VIET VO DAO","Bebas",620,"#ffffff"],["la mia arte marziale","Marker",380,"#ffd23f"]]},
+ {"n":18,"niche":"Vovinam","mkt":"ES","lines":[["VOVINAM","Anton",760,"#2e7bd6"],["VIET VO DAO","Bebas",620,"#ffffff"],["mi arte marcial","Marker",400,"#ffd23f"]]},
+ {"n":19,"niche":"Foil","mkt":"US","lines":[["JUST ONE MORE","Anton",560,"#ffffff"],["DOWNWINDER","Anton",700,"#3ec7d8"]]},
+ {"n":20,"niche":"Foil","mkt":"US","lines":[["PUMP IT","Bebas",900,"#ffffff"],["FOIL IT","Bebas",900,"#3ec7d8"]]}
+]
