@@ -221,24 +221,45 @@
   ]
  },
  "ads": {
-  "budgetCap": "max. 90 € pro Monat, erst ab Gate 1",
+  "budgetCap": "Weihnachtstest: max. 5 €/Tag, Deckel 100 € bis 24.12.; danach 90 €/Monat nur für Gewinner",
   "breakEven": "ACoS ≤ 20 % (3,96 € Royalty bei 19,99 €)",
   "campaigns": [
    {
-    "name": "Neue Designs mit Verkauf",
+    "name": "MP-DE-Weihnachten-Exakt",
     "mkt": "DE",
     "type": "Sponsored Products, manuell, exakt",
-    "keywords": "Keyword-Paket der Nische (z. B. padel shirt lustig, bouldern t-shirt)",
-    "bid": "0,25 €",
-    "budget": "3 €/Tag gesamt",
+    "keywords": "Design-Keywords der 11 Kandidaten",
+    "bid": "0,30 €",
+    "budget": "3 €/Tag",
+    "period": "ab ASIN live (~29.11.) bis 21.12.",
+    "status": "vorbereitet – wartet auf Freigabe + ASINs"
+   },
+   {
+    "name": "MP-DE-Weihnachten-Phrase",
+    "mkt": "DE",
+    "type": "Sponsored Products, manuell, Wortgruppe",
+    "keywords": "Nischen-Keywords (padel shirt, kegelclub shirt …)",
+    "bid": "0,20 €",
+    "budget": "2 €/Tag",
+    "period": "ab ASIN live bis 21.12.",
+    "status": "vorbereitet – wartet auf Freigabe + ASINs"
+   },
+   {
+    "name": "Gewinner",
+    "mkt": "DE",
+    "type": "manuell, exakt",
+    "keywords": "Suchbegriffe mit Verkauf",
+    "bid": "0,25–0,35 €",
+    "budget": "3 €/Tag",
     "period": "ab 4.1.2027 (Gate 1)",
-    "status": "wartet auf Verkäufe"
+    "status": "später"
    }
   ],
   "rules": [
-   "Nur Designs mit ≥ 1 organischem Verkauf bewerben",
-   "Keyword aus nach 15 Klicks ohne Verkauf",
-   "Kampagne aus bei ACoS > 35 % nach 30 Tagen",
+   "Keyword pausieren nach 10 Klicks ohne Verkauf",
+   "ASIN pausieren nach 15 Klicks ohne Verkauf",
+   "ACoS > 30 % nach 7 Tagen → Gebot −20 %",
+   "Ab 21.12. Budget halbieren (Lieferfrist)",
    "Keine Auto-Kampagnen (bisher ROAS 2,33 = Verlust)"
   ],
   "history": {
