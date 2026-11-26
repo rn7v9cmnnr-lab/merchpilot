@@ -1,0 +1,1965 @@
+[
+ {
+  "id": "b1-01",
+  "n": 1,
+  "niche": "Padel",
+  "mkt": "DE",
+  "title": "Nur Noch Ein Satz Padel Padel Spieler Lustig",
+  "brand": "Padel Court Club",
+  "bullet1": "Lustiges Padel Motiv für Padelspieler, die jede Runde auf dem Court lieben – vom Lob bis zum Smash.",
+  "bullet2": "Passt zu Padel Tennis Training, Turnier, Vereinsabend und Doppel mit dem Padel Partner.",
+  "description": "Padel Design für Padelspieler, Padel Tennis Fans und Vereinsmitglieder. Für Training, Turnier und den Abend nach dem Match. Padel, Padelschläger, Pala, Doppel, Court.",
+  "spec": {
+   "lines": [
+    [
+     "NUR NOCH",
+     "Anton",
+     520,
+     "#ffffff"
+    ],
+    [
+     "EIN SATZ",
+     "Anton",
+     520,
+     "#ffffff"
+    ],
+    [
+     "PADEL",
+     "Anton",
+     900,
+     "#c6f432"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-02",
+  "n": 2,
+  "niche": "Padel",
+  "mkt": "DE, US",
+  "title": "Vibora Smash Repeat Padel Spieler Lustig",
+  "brand": "Padel Court Club",
+  "bullet1": "Lustiges Padel Motiv für Padelspieler, die jede Runde auf dem Court lieben – vom Lob bis zum Smash.",
+  "bullet2": "Passt zu Padel Tennis Training, Turnier, Vereinsabend und Doppel mit dem Padel Partner.",
+  "description": "Padel Design für Padelspieler, Padel Tennis Fans und Vereinsmitglieder. Für Training, Turnier und den Abend nach dem Match. Padel, Padelschläger, Pala, Doppel, Court.",
+  "spec": {
+   "lines": [
+    [
+     "VIBORA",
+     "Bebas",
+     820,
+     "#ffffff"
+    ],
+    [
+     "SMASH",
+     "Bebas",
+     820,
+     "#ffffff"
+    ],
+    [
+     "REPEAT",
+     "Bebas",
+     820,
+     "#c6f432"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE",
+    "US"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE",
+    "US"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-03",
+  "n": 3,
+  "niche": "Padel",
+  "mkt": "DE",
+  "title": "Die Glaswand Ist Mein Bester Doppelpartner",
+  "brand": "Padel Court Club",
+  "bullet1": "Lustiges Padel Motiv für Padelspieler, die jede Runde auf dem Court lieben – vom Lob bis zum Smash.",
+  "bullet2": "Passt zu Padel Tennis Training, Turnier, Vereinsabend und Doppel mit dem Padel Partner.",
+  "description": "Padel Design für Padelspieler, Padel Tennis Fans und Vereinsmitglieder. Für Training, Turnier und den Abend nach dem Match. Padel, Padelschläger, Pala, Doppel, Court.",
+  "spec": {
+   "lines": [
+    [
+     "Die Glaswand",
+     "Marker",
+     430,
+     "#ffffff"
+    ],
+    [
+     "ist mein bester",
+     "Marker",
+     430,
+     "#ffffff"
+    ],
+    [
+     "DOPPELPARTNER",
+     "Anton",
+     520,
+     "#c6f432"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-04",
+  "n": 4,
+  "niche": "Padel",
+  "mkt": "DE",
+  "title": "Padel Dad Wie Normal Nur Mit Schläger Padel Spieler Lustig",
+  "brand": "Padel Court Club",
+  "bullet1": "Lustiges Padel Motiv für Padelspieler, die jede Runde auf dem Court lieben – vom Lob bis zum Smash.",
+  "bullet2": "Passt zu Padel Tennis Training, Turnier, Vereinsabend und Doppel mit dem Padel Partner.",
+  "description": "Padel Design für Padelspieler, Padel Tennis Fans und Vereinsmitglieder. Für Training, Turnier und den Abend nach dem Match. Padel, Padelschläger, Pala, Doppel, Court.",
+  "spec": {
+   "lines": [
+    [
+     "PADEL DAD",
+     "Anton",
+     1000,
+     "#c6f432"
+    ],
+    [
+     "wie normal,",
+     "Marker",
+     400,
+     "#ffffff"
+    ],
+    [
+     "nur mit Schläger",
+     "Marker",
+     400,
+     "#ffffff"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-05",
+  "n": 5,
+  "niche": "Bouldern",
+  "mkt": "DE",
+  "title": "Nur Noch Ein Versuch Bouldern Klettern Lustig",
+  "brand": "Boulderhalle Crew",
+  "bullet1": "Lustiges Bouldern Motiv für Boulderer und Kletterer, die ihr Projekt nicht loslassen.",
+  "bullet2": "Für Boulderhalle, Felsen, Klettertraining und Sessions mit der Kletter-Crew.",
+  "description": "Bouldern Design für Boulderer, Kletterer und Boulderhallen-Stammgäste. Chalk, Crimp, Beta, Projekt, Flash und Send – für jede Session in der Halle oder am Fels.",
+  "spec": {
+   "lines": [
+    [
+     "NUR NOCH",
+     "Anton",
+     700,
+     "#ffffff"
+    ],
+    [
+     "EIN VERSUCH",
+     "Anton",
+     700,
+     "#f5a623"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-06",
+  "n": 6,
+  "niche": "Bouldern",
+  "mkt": "DE",
+  "title": "Beta? Hab Ich Nicht Gefragt Bouldern Klettern Lustig",
+  "brand": "Boulderhalle Crew",
+  "bullet1": "Lustiges Bouldern Motiv für Boulderer und Kletterer, die ihr Projekt nicht loslassen.",
+  "bullet2": "Für Boulderhalle, Felsen, Klettertraining und Sessions mit der Kletter-Crew.",
+  "description": "Bouldern Design für Boulderer, Kletterer und Boulderhallen-Stammgäste. Chalk, Crimp, Beta, Projekt, Flash und Send – für jede Session in der Halle oder am Fels.",
+  "spec": {
+   "lines": [
+    [
+     "Beta?",
+     "Anton",
+     900,
+     "#f5a623"
+    ],
+    [
+     "Hab ich nicht",
+     "Marker",
+     450,
+     "#ffffff"
+    ],
+    [
+     "gefragt.",
+     "Marker",
+     450,
+     "#ffffff"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-07",
+  "n": 7,
+  "niche": "Bouldern",
+  "mkt": "DE, US",
+  "title": "Chalk Crimp Repeat Bouldern Klettern Lustig",
+  "brand": "Boulderhalle Crew",
+  "bullet1": "Lustiges Bouldern Motiv für Boulderer und Kletterer, die ihr Projekt nicht loslassen.",
+  "bullet2": "Für Boulderhalle, Felsen, Klettertraining und Sessions mit der Kletter-Crew.",
+  "description": "Bouldern Design für Boulderer, Kletterer und Boulderhallen-Stammgäste. Chalk, Crimp, Beta, Projekt, Flash und Send – für jede Session in der Halle oder am Fels.",
+  "spec": {
+   "lines": [
+    [
+     "CHALK",
+     "Bebas",
+     820,
+     "#ffffff"
+    ],
+    [
+     "CRIMP",
+     "Bebas",
+     820,
+     "#ffffff"
+    ],
+    [
+     "REPEAT",
+     "Bebas",
+     820,
+     "#f5a623"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE",
+    "US"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE",
+    "US"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-08",
+  "n": 8,
+  "niche": "Bouldern",
+  "mkt": "DE",
+  "title": "Mein Projekt Ist Schwerer Als Deins Bouldern Klettern Lustig",
+  "brand": "Boulderhalle Crew",
+  "bullet1": "Lustiges Bouldern Motiv für Boulderer und Kletterer, die ihr Projekt nicht loslassen.",
+  "bullet2": "Für Boulderhalle, Felsen, Klettertraining und Sessions mit der Kletter-Crew.",
+  "description": "Bouldern Design für Boulderer, Kletterer und Boulderhallen-Stammgäste. Chalk, Crimp, Beta, Projekt, Flash und Send – für jede Session in der Halle oder am Fels.",
+  "spec": {
+   "lines": [
+    [
+     "MEIN PROJEKT",
+     "Anton",
+     560,
+     "#f5a623"
+    ],
+    [
+     "ist schwerer",
+     "Marker",
+     450,
+     "#ffffff"
+    ],
+    [
+     "als deins",
+     "Marker",
+     450,
+     "#ffffff"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-09",
+  "n": 9,
+  "niche": "Kegeln",
+  "mkt": "DE",
+  "title": "Alle Neune Oder Pudel Kegeln Kegelclub",
+  "brand": "Kegelclub Stammtisch",
+  "bullet1": "Lustiges Kegeln Motiv für Kegelbrüder, Kegelschwestern und den ganzen Kegelclub.",
+  "bullet2": "Für Kegelabend, Kegeltour, Vereinsmeisterschaft und Stammtisch auf der Kegelbahn.",
+  "description": "Kegeln Design für Kegler, Kegelclubs und Kegelvereine. Alle Neune, Pudel, Kranz und Kegeltour – für jeden Abend auf der Kegelbahn mit der Truppe.",
+  "spec": {
+   "lines": [
+    [
+     "ALLE NEUNE",
+     "Anton",
+     720,
+     "#ffffff"
+    ],
+    [
+     "ODER PUDEL",
+     "Anton",
+     720,
+     "#e94b3c"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-10",
+  "n": 10,
+  "niche": "Kegeln",
+  "mkt": "DE",
+  "title": "Kegelbruder Kugel. Kranz. Bier Kegeln Kegelclub",
+  "brand": "Kegelclub Stammtisch",
+  "bullet1": "Lustiges Kegeln Motiv für Kegelbrüder, Kegelschwestern und den ganzen Kegelclub.",
+  "bullet2": "Für Kegelabend, Kegeltour, Vereinsmeisterschaft und Stammtisch auf der Kegelbahn.",
+  "description": "Kegeln Design für Kegler, Kegelclubs und Kegelvereine. Alle Neune, Pudel, Kranz und Kegeltour – für jeden Abend auf der Kegelbahn mit der Truppe.",
+  "spec": {
+   "lines": [
+    [
+     "KEGELBRUDER",
+     "Anton",
+     640,
+     "#e94b3c"
+    ],
+    [
+     "Kugel. Kranz. Bier.",
+     "Marker",
+     420,
+     "#ffffff"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-11",
+  "n": 11,
+  "niche": "Kegeln",
+  "mkt": "DE",
+  "title": "Ich Bin Nur Zum Kegeln Hier Kegeln Kegelclub",
+  "brand": "Kegelclub Stammtisch",
+  "bullet1": "Lustiges Kegeln Motiv für Kegelbrüder, Kegelschwestern und den ganzen Kegelclub.",
+  "bullet2": "Für Kegelabend, Kegeltour, Vereinsmeisterschaft und Stammtisch auf der Kegelbahn.",
+  "description": "Kegeln Design für Kegler, Kegelclubs und Kegelvereine. Alle Neune, Pudel, Kranz und Kegeltour – für jeden Abend auf der Kegelbahn mit der Truppe.",
+  "spec": {
+   "lines": [
+    [
+     "Ich bin nur",
+     "Marker",
+     480,
+     "#ffffff"
+    ],
+    [
+     "zum KEGELN",
+     "Anton",
+     700,
+     "#e94b3c"
+    ],
+    [
+     "hier",
+     "Marker",
+     480,
+     "#ffffff"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-12",
+  "n": 12,
+  "niche": "Doppelkopf",
+  "mkt": "DE",
+  "title": "Re Kontra Keine 90 Doppelkopf Kartenspiel",
+  "brand": "Kartenrunde Stammtisch",
+  "bullet1": "Lustiges Kartenspiel Motiv für Doppelkopf, Skat und Schafkopf Spieler am Stammtisch.",
+  "bullet2": "Für Kartenabend, Turnier, Skatrunde, Doppelkopfrunde und Schafkopfrunde.",
+  "description": "Kartenspiel Design für Doppelkopf, Skat und Schafkopf Runden. Re, Kontra, Solo, Grand, Sauspiel und Reizen – für jeden Kartenabend mit Freunden und Familie.",
+  "spec": {
+   "lines": [
+    [
+     "RE.",
+     "Anton",
+     760,
+     "#ffffff"
+    ],
+    [
+     "KONTRA.",
+     "Anton",
+     760,
+     "#ffffff"
+    ],
+    [
+     "KEINE 90.",
+     "Anton",
+     760,
+     "#e94b3c"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-13",
+  "n": 13,
+  "niche": "Doppelkopf",
+  "mkt": "DE",
+  "title": "Solo Spiel Ich Nur Beim Doppelkopf Doppelkopf Kartenspiel",
+  "brand": "Kartenrunde Stammtisch",
+  "bullet1": "Lustiges Kartenspiel Motiv für Doppelkopf, Skat und Schafkopf Spieler am Stammtisch.",
+  "bullet2": "Für Kartenabend, Turnier, Skatrunde, Doppelkopfrunde und Schafkopfrunde.",
+  "description": "Kartenspiel Design für Doppelkopf, Skat und Schafkopf Runden. Re, Kontra, Solo, Grand, Sauspiel und Reizen – für jeden Kartenabend mit Freunden und Familie.",
+  "spec": {
+   "lines": [
+    [
+     "SOLO",
+     "Anton",
+     900,
+     "#e94b3c"
+    ],
+    [
+     "spiel ich nur",
+     "Marker",
+     440,
+     "#ffffff"
+    ],
+    [
+     "beim Doppelkopf",
+     "Marker",
+     440,
+     "#ffffff"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-14",
+  "n": 14,
+  "niche": "Skat",
+  "mkt": "DE",
+  "title": "18 20 Zwo Drei Passe Skat Kartenspiel",
+  "brand": "Kartenrunde Stammtisch",
+  "bullet1": "Lustiges Kartenspiel Motiv für Doppelkopf, Skat und Schafkopf Spieler am Stammtisch.",
+  "bullet2": "Für Kartenabend, Turnier, Skatrunde, Doppelkopfrunde und Schafkopfrunde.",
+  "description": "Kartenspiel Design für Doppelkopf, Skat und Schafkopf Runden. Re, Kontra, Solo, Grand, Sauspiel und Reizen – für jeden Kartenabend mit Freunden und Familie.",
+  "spec": {
+   "lines": [
+    [
+     "18",
+     "Anton",
+     520,
+     "#ffffff"
+    ],
+    [
+     "20",
+     "Anton",
+     520,
+     "#ffffff"
+    ],
+    [
+     "ZWO",
+     "Anton",
+     520,
+     "#ffffff"
+    ],
+    [
+     "DREI",
+     "Anton",
+     520,
+     "#ffffff"
+    ],
+    [
+     "PASSE",
+     "Anton",
+     620,
+     "#e94b3c"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-15",
+  "n": 15,
+  "niche": "Schafkopf",
+  "mkt": "DE",
+  "title": "Sauspiel Auf Die Alte Schafkopf Kartenspiel",
+  "brand": "Kartenrunde Stammtisch",
+  "bullet1": "Lustiges Kartenspiel Motiv für Doppelkopf, Skat und Schafkopf Spieler am Stammtisch.",
+  "bullet2": "Für Kartenabend, Turnier, Skatrunde, Doppelkopfrunde und Schafkopfrunde.",
+  "description": "Kartenspiel Design für Doppelkopf, Skat und Schafkopf Runden. Re, Kontra, Solo, Grand, Sauspiel und Reizen – für jeden Kartenabend mit Freunden und Familie.",
+  "spec": {
+   "lines": [
+    [
+     "SAUSPIEL",
+     "Anton",
+     760,
+     "#ffffff"
+    ],
+    [
+     "AUF DIE ALTE",
+     "Anton",
+     620,
+     "#3fa34d"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-16",
+  "n": 16,
+  "niche": "Vovinam",
+  "mkt": "FR",
+  "title": "Vovinam Mon Art Martial Art Martial",
+  "brand": "Vovinam Dojo",
+  "bullet1": "Design Vovinam pour pratiquants de cet art martial vietnamien, du débutant au maître.",
+  "bullet2": "Idéal pour l'entraînement, les compétitions et le club de Vovinam.",
+  "description": "Design Vovinam pour les pratiquants d'arts martiaux vietnamiens. Pour l'entraînement, le dojo, les passages de ceinture et les compétitions de Vovinam.",
+  "spec": {
+   "lines": [
+    [
+     "VOVINAM",
+     "Anton",
+     1000,
+     "#2e7bd6"
+    ],
+    [
+     "mon art martial",
+     "Marker",
+     400,
+     "#ffd23f"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "FR"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-17",
+  "n": 17,
+  "niche": "Vovinam",
+  "mkt": "IT",
+  "title": "Vovinam La Mia Arte Marziale Arte Marziale",
+  "brand": "Vovinam Dojo",
+  "bullet1": "Design Vovinam per praticanti di quest'arte marziale vietnamita, dal principiante al maestro.",
+  "bullet2": "Ideale per allenamento, gare e la palestra di Vovinam.",
+  "description": "Design Vovinam per chi pratica arti marziali vietnamite. Per allenamento, palestra, esami di cintura e gare di Vovinam.",
+  "spec": {
+   "lines": [
+    [
+     "VOVINAM",
+     "Anton",
+     1000,
+     "#2e7bd6"
+    ],
+    [
+     "la mia arte marziale",
+     "Marker",
+     400,
+     "#ffd23f"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "IT"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-18",
+  "n": 18,
+  "niche": "Vovinam",
+  "mkt": "ES",
+  "title": "Vovinam Mi Arte Marcial Arte Marcial",
+  "brand": "Vovinam Dojo",
+  "bullet1": "Diseño Vovinam para practicantes de este arte marcial vietnamita, de principiante a maestro.",
+  "bullet2": "Ideal para entrenamiento, competiciones y el club de Vovinam.",
+  "description": "Diseño Vovinam para practicantes de artes marciales vietnamitas. Para entrenamiento, dojo, exámenes de cinturón y competiciones de Vovinam.",
+  "spec": {
+   "lines": [
+    [
+     "VOVINAM",
+     "Anton",
+     1000,
+     "#2e7bd6"
+    ],
+    [
+     "mi arte marcial",
+     "Marker",
+     400,
+     "#ffd23f"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "ES"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-19",
+  "n": 19,
+  "niche": "Foil",
+  "mkt": "US",
+  "title": "Glide Mode On Hydrofoil Foil Surfing",
+  "brand": "Foil Riders Club",
+  "bullet1": "Funny hydrofoil design for foil surfers, wing foilers and pump foilers who love to glide.",
+  "bullet2": "Made for foil sessions, downwind runs, flat water pumping and the beach after.",
+  "description": "Hydrofoil design for foil surfers, wing foilers, pump foilers and downwind riders. For every session on the foil board, from flat water to ocean swell.",
+  "spec": {
+   "lines": [
+    [
+     "GLIDE",
+     "Bebas",
+     1000,
+     "#ffffff"
+    ],
+    [
+     "MODE",
+     "Bebas",
+     1000,
+     "#ffffff"
+    ],
+    [
+     "ON",
+     "Bebas",
+     1000,
+     "#3ec7d8"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "US"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "US"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-20",
+  "n": 20,
+  "niche": "Foil",
+  "mkt": "US",
+  "title": "Keep Pumping Hydrofoil Foil Surfing",
+  "brand": "Foil Riders Club",
+  "bullet1": "Funny hydrofoil design for foil surfers, wing foilers and pump foilers who love to glide.",
+  "bullet2": "Made for foil sessions, downwind runs, flat water pumping and the beach after.",
+  "description": "Hydrofoil design for foil surfers, wing foilers, pump foilers and downwind riders. For every session on the foil board, from flat water to ocean swell.",
+  "spec": {
+   "lines": [
+    [
+     "KEEP",
+     "Anton",
+     1000,
+     "#ffffff"
+    ],
+    [
+     "PUMPING",
+     "Anton",
+     1000,
+     "#3ec7d8"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "US"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "US"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-21",
+  "n": 21,
+  "niche": "Padel",
+  "mkt": "DE",
+  "title": "Padel Ist Kein Tennis Padel Spieler Lustig",
+  "brand": "Padel Court Club",
+  "bullet1": "Lustiges Padel Motiv für Padelspieler, die jede Runde auf dem Court lieben – vom Lob bis zum Smash.",
+  "bullet2": "Passt zu Padel Tennis Training, Turnier, Vereinsabend und Doppel mit dem Padel Partner.",
+  "description": "Padel Design für Padelspieler, Padel Tennis Fans und Vereinsmitglieder. Für Training, Turnier und den Abend nach dem Match. Padel, Padelschläger, Pala, Doppel, Court.",
+  "spec": {
+   "lines": [
+    [
+     "PADEL",
+     "Anton",
+     1000,
+     "#c6f432"
+    ],
+    [
+     "IST KEIN",
+     "Anton",
+     1000,
+     "#ffffff"
+    ],
+    [
+     "TENNIS",
+     "Anton",
+     1000,
+     "#ffffff"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-22",
+  "n": 22,
+  "niche": "Padel",
+  "mkt": "DE",
+  "title": "Erst Lob Dann Smash Padel Spieler Lustig",
+  "brand": "Padel Court Club",
+  "bullet1": "Lustiges Padel Motiv für Padelspieler, die jede Runde auf dem Court lieben – vom Lob bis zum Smash.",
+  "bullet2": "Passt zu Padel Tennis Training, Turnier, Vereinsabend und Doppel mit dem Padel Partner.",
+  "description": "Padel Design für Padelspieler, Padel Tennis Fans und Vereinsmitglieder. Für Training, Turnier und den Abend nach dem Match. Padel, Padelschläger, Pala, Doppel, Court.",
+  "spec": {
+   "lines": [
+    [
+     "ERST LOB",
+     "Anton",
+     1000,
+     "#ffffff"
+    ],
+    [
+     "DANN SMASH",
+     "Anton",
+     1000,
+     "#c6f432"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-23",
+  "n": 23,
+  "niche": "Padel",
+  "mkt": "DE",
+  "title": "Lob Vibora Smash Bier Padel Spieler Lustig",
+  "brand": "Padel Court Club",
+  "bullet1": "Lustiges Padel Motiv für Padelspieler, die jede Runde auf dem Court lieben – vom Lob bis zum Smash.",
+  "bullet2": "Passt zu Padel Tennis Training, Turnier, Vereinsabend und Doppel mit dem Padel Partner.",
+  "description": "Padel Design für Padelspieler, Padel Tennis Fans und Vereinsmitglieder. Für Training, Turnier und den Abend nach dem Match. Padel, Padelschläger, Pala, Doppel, Court.",
+  "spec": {
+   "lines": [
+    [
+     "LOB",
+     "Bebas",
+     1000,
+     "#ffffff"
+    ],
+    [
+     "VIBORA",
+     "Bebas",
+     1000,
+     "#ffffff"
+    ],
+    [
+     "SMASH",
+     "Bebas",
+     1000,
+     "#ffffff"
+    ],
+    [
+     "BIER",
+     "Bebas",
+     1000,
+     "#c6f432"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-24",
+  "n": 24,
+  "niche": "Padel",
+  "mkt": "DE",
+  "title": "Padelabend Handy Aus Padel Spieler Lustig",
+  "brand": "Padel Court Club",
+  "bullet1": "Lustiges Padel Motiv für Padelspieler, die jede Runde auf dem Court lieben – vom Lob bis zum Smash.",
+  "bullet2": "Passt zu Padel Tennis Training, Turnier, Vereinsabend und Doppel mit dem Padel Partner.",
+  "description": "Padel Design für Padelspieler, Padel Tennis Fans und Vereinsmitglieder. Für Training, Turnier und den Abend nach dem Match. Padel, Padelschläger, Pala, Doppel, Court.",
+  "spec": {
+   "lines": [
+    [
+     "PADELABEND",
+     "Anton",
+     1000,
+     "#c6f432"
+    ],
+    [
+     "Handy aus.",
+     "Marker",
+     400,
+     "#ffffff"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-25",
+  "n": 25,
+  "niche": "Padel",
+  "mkt": "UK, US",
+  "title": "Smash The Glass Padel Player Funny",
+  "brand": "Padel Court Club",
+  "bullet1": "Funny padel design for padel players who live for the glass walls, the lob and the smash.",
+  "bullet2": "Great for padel tennis training, tournaments, club nights and doubles with your padel partner.",
+  "description": "Padel design for padel players, padel tennis fans and club members. Made for training, tournaments and the evening after the match. Padel, padel racket, doubles, court.",
+  "spec": {
+   "lines": [
+    [
+     "SMASH",
+     "Anton",
+     1000,
+     "#ffffff"
+    ],
+    [
+     "THE GLASS",
+     "Anton",
+     1000,
+     "#c6f432"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "GB",
+    "US"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "US"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-26",
+  "n": 26,
+  "niche": "Padel",
+  "mkt": "UK, US",
+  "title": "Padel Is Not Tennis Padel Player Funny",
+  "brand": "Padel Court Club",
+  "bullet1": "Funny padel design for padel players who live for the glass walls, the lob and the smash.",
+  "bullet2": "Great for padel tennis training, tournaments, club nights and doubles with your padel partner.",
+  "description": "Padel design for padel players, padel tennis fans and club members. Made for training, tournaments and the evening after the match. Padel, padel racket, doubles, court.",
+  "spec": {
+   "lines": [
+    [
+     "PADEL",
+     "Anton",
+     1000,
+     "#c6f432"
+    ],
+    [
+     "IS NOT",
+     "Anton",
+     1000,
+     "#ffffff"
+    ],
+    [
+     "TENNIS",
+     "Anton",
+     1000,
+     "#ffffff"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "GB",
+    "US"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "US"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-27",
+  "n": 27,
+  "niche": "Padel",
+  "mkt": "UK, US",
+  "title": "Por Tres Or Nothing Padel Player Funny",
+  "brand": "Padel Court Club",
+  "bullet1": "Funny padel design for padel players who live for the glass walls, the lob and the smash.",
+  "bullet2": "Great for padel tennis training, tournaments, club nights and doubles with your padel partner.",
+  "description": "Padel design for padel players, padel tennis fans and club members. Made for training, tournaments and the evening after the match. Padel, padel racket, doubles, court.",
+  "spec": {
+   "lines": [
+    [
+     "POR TRES",
+     "Anton",
+     1000,
+     "#c6f432"
+    ],
+    [
+     "or nothing",
+     "Marker",
+     400,
+     "#ffffff"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "GB",
+    "US"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "US"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-28",
+  "n": 28,
+  "niche": "Padel",
+  "mkt": "DE",
+  "title": "Padel Mom Wie Normal Nur Mit Schläger Padel Spieler Lustig",
+  "brand": "Padel Court Club",
+  "bullet1": "Lustiges Padel Motiv für Padelspieler, die jede Runde auf dem Court lieben – vom Lob bis zum Smash.",
+  "bullet2": "Passt zu Padel Tennis Training, Turnier, Vereinsabend und Doppel mit dem Padel Partner.",
+  "description": "Padel Design für Padelspieler, Padel Tennis Fans und Vereinsmitglieder. Für Training, Turnier und den Abend nach dem Match. Padel, Padelschläger, Pala, Doppel, Court.",
+  "spec": {
+   "lines": [
+    [
+     "PADEL MOM",
+     "Anton",
+     1000,
+     "#c6f432"
+    ],
+    [
+     "wie normal,",
+     "Marker",
+     400,
+     "#ffffff"
+    ],
+    [
+     "nur mit Schläger",
+     "Marker",
+     400,
+     "#ffffff"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-29",
+  "n": 29,
+  "niche": "Bouldern",
+  "mkt": "DE",
+  "title": "Chalk Ist Mein Parfum Bouldern Klettern Lustig",
+  "brand": "Boulderhalle Crew",
+  "bullet1": "Lustiges Bouldern Motiv für Boulderer und Kletterer, die ihr Projekt nicht loslassen.",
+  "bullet2": "Für Boulderhalle, Felsen, Klettertraining und Sessions mit der Kletter-Crew.",
+  "description": "Bouldern Design für Boulderer, Kletterer und Boulderhallen-Stammgäste. Chalk, Crimp, Beta, Projekt, Flash und Send – für jede Session in der Halle oder am Fels.",
+  "spec": {
+   "lines": [
+    [
+     "CHALK",
+     "Anton",
+     1000,
+     "#f5a623"
+    ],
+    [
+     "ist mein Parfum",
+     "Marker",
+     400,
+     "#ffffff"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-30",
+  "n": 30,
+  "niche": "Bouldern",
+  "mkt": "DE",
+  "title": "Fallen Aufstehen Nochmal Bouldern Klettern Lustig",
+  "brand": "Boulderhalle Crew",
+  "bullet1": "Lustiges Bouldern Motiv für Boulderer und Kletterer, die ihr Projekt nicht loslassen.",
+  "bullet2": "Für Boulderhalle, Felsen, Klettertraining und Sessions mit der Kletter-Crew.",
+  "description": "Bouldern Design für Boulderer, Kletterer und Boulderhallen-Stammgäste. Chalk, Crimp, Beta, Projekt, Flash und Send – für jede Session in der Halle oder am Fels.",
+  "spec": {
+   "lines": [
+    [
+     "FALLEN",
+     "Bebas",
+     1000,
+     "#ffffff"
+    ],
+    [
+     "AUFSTEHEN",
+     "Bebas",
+     1000,
+     "#ffffff"
+    ],
+    [
+     "NOCHMAL",
+     "Bebas",
+     1000,
+     "#f5a623"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-31",
+  "n": 31,
+  "niche": "Bouldern",
+  "mkt": "DE",
+  "title": "Ich Häng Nur Rum Bouldern Klettern Lustig",
+  "brand": "Boulderhalle Crew",
+  "bullet1": "Lustiges Bouldern Motiv für Boulderer und Kletterer, die ihr Projekt nicht loslassen.",
+  "bullet2": "Für Boulderhalle, Felsen, Klettertraining und Sessions mit der Kletter-Crew.",
+  "description": "Bouldern Design für Boulderer, Kletterer und Boulderhallen-Stammgäste. Chalk, Crimp, Beta, Projekt, Flash und Send – für jede Session in der Halle oder am Fels.",
+  "spec": {
+   "lines": [
+    [
+     "ICH HÄNG",
+     "Anton",
+     1000,
+     "#ffffff"
+    ],
+    [
+     "NUR RUM",
+     "Anton",
+     1000,
+     "#f5a623"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-32",
+  "n": 32,
+  "niche": "Bouldern",
+  "mkt": "DE",
+  "title": "Projekt Seit Drei Wochen Bouldern Klettern Lustig",
+  "brand": "Boulderhalle Crew",
+  "bullet1": "Lustiges Bouldern Motiv für Boulderer und Kletterer, die ihr Projekt nicht loslassen.",
+  "bullet2": "Für Boulderhalle, Felsen, Klettertraining und Sessions mit der Kletter-Crew.",
+  "description": "Bouldern Design für Boulderer, Kletterer und Boulderhallen-Stammgäste. Chalk, Crimp, Beta, Projekt, Flash und Send – für jede Session in der Halle oder am Fels.",
+  "spec": {
+   "lines": [
+    [
+     "PROJEKT",
+     "Anton",
+     1000,
+     "#f5a623"
+    ],
+    [
+     "seit drei Wochen",
+     "Marker",
+     400,
+     "#ffffff"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-33",
+  "n": 33,
+  "niche": "Bouldern",
+  "mkt": "DE",
+  "title": "Boulder Mom Wie Normal Nur Mit Chalk",
+  "brand": "Boulderhalle Crew",
+  "bullet1": "Lustiges Bouldern Motiv für Boulderer und Kletterer, die ihr Projekt nicht loslassen.",
+  "bullet2": "Für Boulderhalle, Felsen, Klettertraining und Sessions mit der Kletter-Crew.",
+  "description": "Bouldern Design für Boulderer, Kletterer und Boulderhallen-Stammgäste. Chalk, Crimp, Beta, Projekt, Flash und Send – für jede Session in der Halle oder am Fels.",
+  "spec": {
+   "lines": [
+    [
+     "BOULDER MOM",
+     "Anton",
+     1000,
+     "#f5a623"
+    ],
+    [
+     "wie normal,",
+     "Marker",
+     400,
+     "#ffffff"
+    ],
+    [
+     "nur mit Chalk",
+     "Marker",
+     400,
+     "#ffffff"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-34",
+  "n": 34,
+  "niche": "Kegeln",
+  "mkt": "DE",
+  "title": "Kegeln Ist Mein Cardio Kegeln Kegelclub",
+  "brand": "Kegelclub Stammtisch",
+  "bullet1": "Lustiges Kegeln Motiv für Kegelbrüder, Kegelschwestern und den ganzen Kegelclub.",
+  "bullet2": "Für Kegelabend, Kegeltour, Vereinsmeisterschaft und Stammtisch auf der Kegelbahn.",
+  "description": "Kegeln Design für Kegler, Kegelclubs und Kegelvereine. Alle Neune, Pudel, Kranz und Kegeltour – für jeden Abend auf der Kegelbahn mit der Truppe.",
+  "spec": {
+   "lines": [
+    [
+     "KEGELN",
+     "Anton",
+     1000,
+     "#e94b3c"
+    ],
+    [
+     "IST MEIN",
+     "Anton",
+     1000,
+     "#ffffff"
+    ],
+    [
+     "CARDIO",
+     "Anton",
+     1000,
+     "#ffffff"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-35",
+  "n": 35,
+  "niche": "Kegeln",
+  "mkt": "DE",
+  "title": "Kegel Schwester Kugel. Kranz. Sekt Kegeln Kegelclub",
+  "brand": "Kegelclub Stammtisch",
+  "bullet1": "Lustiges Kegeln Motiv für Kegelbrüder, Kegelschwestern und den ganzen Kegelclub.",
+  "bullet2": "Für Kegelabend, Kegeltour, Vereinsmeisterschaft und Stammtisch auf der Kegelbahn.",
+  "description": "Kegeln Design für Kegler, Kegelclubs und Kegelvereine. Alle Neune, Pudel, Kranz und Kegeltour – für jeden Abend auf der Kegelbahn mit der Truppe.",
+  "spec": {
+   "lines": [
+    [
+     "KEGEL",
+     "Anton",
+     1000,
+     "#e94b3c"
+    ],
+    [
+     "SCHWESTER",
+     "Anton",
+     1000,
+     "#ffffff"
+    ],
+    [
+     "Kugel. Kranz. Sekt.",
+     "Marker",
+     400,
+     "#ffffff"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-36",
+  "n": 36,
+  "niche": "Kegeln",
+  "mkt": "DE",
+  "title": "Pudel König Einer Muss Es Ja Machen Kegeln Kegelclub",
+  "brand": "Kegelclub Stammtisch",
+  "bullet1": "Lustiges Kegeln Motiv für Kegelbrüder, Kegelschwestern und den ganzen Kegelclub.",
+  "bullet2": "Für Kegelabend, Kegeltour, Vereinsmeisterschaft und Stammtisch auf der Kegelbahn.",
+  "description": "Kegeln Design für Kegler, Kegelclubs und Kegelvereine. Alle Neune, Pudel, Kranz und Kegeltour – für jeden Abend auf der Kegelbahn mit der Truppe.",
+  "spec": {
+   "lines": [
+    [
+     "PUDEL",
+     "Anton",
+     1000,
+     "#e94b3c"
+    ],
+    [
+     "KÖNIG",
+     "Anton",
+     1000,
+     "#ffffff"
+    ],
+    [
+     "einer muss es ja machen",
+     "Marker",
+     400,
+     "#ffffff"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-37",
+  "n": 37,
+  "niche": "Kegeln",
+  "mkt": "DE",
+  "title": "Kegelclub Stammtisch Legende Kegeln Kegelclub",
+  "brand": "Kegelclub Stammtisch",
+  "bullet1": "Lustiges Kegeln Motiv für Kegelbrüder, Kegelschwestern und den ganzen Kegelclub.",
+  "bullet2": "Für Kegelabend, Kegeltour, Vereinsmeisterschaft und Stammtisch auf der Kegelbahn.",
+  "description": "Kegeln Design für Kegler, Kegelclubs und Kegelvereine. Alle Neune, Pudel, Kranz und Kegeltour – für jeden Abend auf der Kegelbahn mit der Truppe.",
+  "spec": {
+   "lines": [
+    [
+     "KEGELCLUB",
+     "Anton",
+     1000,
+     "#ffffff"
+    ],
+    [
+     "STAMMTISCH",
+     "Anton",
+     1000,
+     "#ffffff"
+    ],
+    [
+     "LEGENDE",
+     "Anton",
+     1000,
+     "#e94b3c"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-38",
+  "n": 38,
+  "niche": "Skat",
+  "mkt": "DE",
+  "title": "Grand Ohne Vier Skat Kartenspiel",
+  "brand": "Kartenrunde Stammtisch",
+  "bullet1": "Lustiges Kartenspiel Motiv für Doppelkopf, Skat und Schafkopf Spieler am Stammtisch.",
+  "bullet2": "Für Kartenabend, Turnier, Skatrunde, Doppelkopfrunde und Schafkopfrunde.",
+  "description": "Kartenspiel Design für Doppelkopf, Skat und Schafkopf Runden. Re, Kontra, Solo, Grand, Sauspiel und Reizen – für jeden Kartenabend mit Freunden und Familie.",
+  "spec": {
+   "lines": [
+    [
+     "GRAND",
+     "Anton",
+     1000,
+     "#ffffff"
+    ],
+    [
+     "OHNE VIER",
+     "Anton",
+     1000,
+     "#e94b3c"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-39",
+  "n": 39,
+  "niche": "Skat",
+  "mkt": "DE",
+  "title": "Wer Gibt? Skat Kartenspiel",
+  "brand": "Kartenrunde Stammtisch",
+  "bullet1": "Lustiges Kartenspiel Motiv für Doppelkopf, Skat und Schafkopf Spieler am Stammtisch.",
+  "bullet2": "Für Kartenabend, Turnier, Skatrunde, Doppelkopfrunde und Schafkopfrunde.",
+  "description": "Kartenspiel Design für Doppelkopf, Skat und Schafkopf Runden. Re, Kontra, Solo, Grand, Sauspiel und Reizen – für jeden Kartenabend mit Freunden und Familie.",
+  "spec": {
+   "lines": [
+    [
+     "WER",
+     "Anton",
+     1000,
+     "#ffffff"
+    ],
+    [
+     "GIBT?",
+     "Anton",
+     1000,
+     "#e94b3c"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-40",
+  "n": 40,
+  "niche": "Skat",
+  "mkt": "DE",
+  "title": "18? Hab Ich Skat Kartenspiel",
+  "brand": "Kartenrunde Stammtisch",
+  "bullet1": "Lustiges Kartenspiel Motiv für Doppelkopf, Skat und Schafkopf Spieler am Stammtisch.",
+  "bullet2": "Für Kartenabend, Turnier, Skatrunde, Doppelkopfrunde und Schafkopfrunde.",
+  "description": "Kartenspiel Design für Doppelkopf, Skat und Schafkopf Runden. Re, Kontra, Solo, Grand, Sauspiel und Reizen – für jeden Kartenabend mit Freunden und Familie.",
+  "spec": {
+   "lines": [
+    [
+     "18?",
+     "Anton",
+     1000,
+     "#ffffff"
+    ],
+    [
+     "HAB ICH.",
+     "Anton",
+     1000,
+     "#e94b3c"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-41",
+  "n": 41,
+  "niche": "Doppelkopf",
+  "mkt": "DE",
+  "title": "Schweine Angesagt Doppelkopf Kartenspiel",
+  "brand": "Kartenrunde Stammtisch",
+  "bullet1": "Lustiges Kartenspiel Motiv für Doppelkopf, Skat und Schafkopf Spieler am Stammtisch.",
+  "bullet2": "Für Kartenabend, Turnier, Skatrunde, Doppelkopfrunde und Schafkopfrunde.",
+  "description": "Kartenspiel Design für Doppelkopf, Skat und Schafkopf Runden. Re, Kontra, Solo, Grand, Sauspiel und Reizen – für jeden Kartenabend mit Freunden und Familie.",
+  "spec": {
+   "lines": [
+    [
+     "SCHWEINE",
+     "Anton",
+     1000,
+     "#e94b3c"
+    ],
+    [
+     "angesagt",
+     "Marker",
+     400,
+     "#ffffff"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-42",
+  "n": 42,
+  "niche": "Schafkopf",
+  "mkt": "DE",
+  "title": "Solo Tout Schafkopf Kartenspiel",
+  "brand": "Kartenrunde Stammtisch",
+  "bullet1": "Lustiges Kartenspiel Motiv für Doppelkopf, Skat und Schafkopf Spieler am Stammtisch.",
+  "bullet2": "Für Kartenabend, Turnier, Skatrunde, Doppelkopfrunde und Schafkopfrunde.",
+  "description": "Kartenspiel Design für Doppelkopf, Skat und Schafkopf Runden. Re, Kontra, Solo, Grand, Sauspiel und Reizen – für jeden Kartenabend mit Freunden und Familie.",
+  "spec": {
+   "lines": [
+    [
+     "SOLO",
+     "Anton",
+     1000,
+     "#3fa34d"
+    ],
+    [
+     "TOUT",
+     "Anton",
+     1000,
+     "#ffffff"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-43",
+  "n": 43,
+  "niche": "Vovinam",
+  "mkt": "DE",
+  "title": "Vovinam Meine Kampfkunst Kampfkunst",
+  "brand": "Vovinam Dojo",
+  "bullet1": "Vovinam Motiv für Kampfsportler, die die vietnamesische Kampfkunst trainieren.",
+  "bullet2": "Für Training, Gürtelprüfung, Wettkampf und den Vovinam Verein.",
+  "description": "Vovinam Design für Kampfkunst Fans und Vovinam Schüler. Für Training, Dojo, Gürtelprüfung und Wettkampf in der vietnamesischen Kampfkunst.",
+  "spec": {
+   "lines": [
+    [
+     "VOVINAM",
+     "Anton",
+     1000,
+     "#2e7bd6"
+    ],
+    [
+     "meine Kampfkunst",
+     "Marker",
+     400,
+     "#ffd23f"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "DE"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "DE"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-44",
+  "n": 44,
+  "niche": "Vovinam",
+  "mkt": "FR",
+  "title": "Ceinture Bleue Vovinam Art Martial",
+  "brand": "Vovinam Dojo",
+  "bullet1": "Design Vovinam pour pratiquants de cet art martial vietnamien, du débutant au maître.",
+  "bullet2": "Idéal pour l'entraînement, les compétitions et le club de Vovinam.",
+  "description": "Design Vovinam pour les pratiquants d'arts martiaux vietnamiens. Pour l'entraînement, le dojo, les passages de ceinture et les compétitions de Vovinam.",
+  "spec": {
+   "lines": [
+    [
+     "CEINTURE",
+     "Anton",
+     1000,
+     "#ffffff"
+    ],
+    [
+     "BLEUE",
+     "Anton",
+     1000,
+     "#2e7bd6"
+    ],
+    [
+     "Vovinam",
+     "Marker",
+     400,
+     "#ffd23f"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "FR"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-45",
+  "n": 45,
+  "niche": "Vovinam",
+  "mkt": "ES",
+  "title": "Vovinam Es Mi Camino Arte Marcial",
+  "brand": "Vovinam Dojo",
+  "bullet1": "Diseño Vovinam para practicantes de este arte marcial vietnamita, de principiante a maestro.",
+  "bullet2": "Ideal para entrenamiento, competiciones y el club de Vovinam.",
+  "description": "Diseño Vovinam para practicantes de artes marciales vietnamitas. Para entrenamiento, dojo, exámenes de cinturón y competiciones de Vovinam.",
+  "spec": {
+   "lines": [
+    [
+     "VOVINAM",
+     "Anton",
+     1000,
+     "#2e7bd6"
+    ],
+    [
+     "es mi camino",
+     "Marker",
+     400,
+     "#ffd23f"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "ES"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-46",
+  "n": 46,
+  "niche": "Vovinam",
+  "mkt": "IT",
+  "title": "Vovinam È La Mia Strada Arte Marziale",
+  "brand": "Vovinam Dojo",
+  "bullet1": "Design Vovinam per praticanti di quest'arte marziale vietnamita, dal principiante al maestro.",
+  "bullet2": "Ideale per allenamento, gare e la palestra di Vovinam.",
+  "description": "Design Vovinam per chi pratica arti marziali vietnamite. Per allenamento, palestra, esami di cintura e gare di Vovinam.",
+  "spec": {
+   "lines": [
+    [
+     "VOVINAM",
+     "Anton",
+     1000,
+     "#2e7bd6"
+    ],
+    [
+     "è la mia strada",
+     "Marker",
+     400,
+     "#ffd23f"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "IT"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-47",
+  "n": 47,
+  "niche": "Foil",
+  "mkt": "US",
+  "title": "Glide Pump Repeat Hydrofoil Foil Surfing",
+  "brand": "Foil Riders Club",
+  "bullet1": "Funny hydrofoil design for foil surfers, wing foilers and pump foilers who love to glide.",
+  "bullet2": "Made for foil sessions, downwind runs, flat water pumping and the beach after.",
+  "description": "Hydrofoil design for foil surfers, wing foilers, pump foilers and downwind riders. For every session on the foil board, from flat water to ocean swell.",
+  "spec": {
+   "lines": [
+    [
+     "GLIDE",
+     "Bebas",
+     1000,
+     "#ffffff"
+    ],
+    [
+     "PUMP",
+     "Bebas",
+     1000,
+     "#ffffff"
+    ],
+    [
+     "REPEAT",
+     "Bebas",
+     1000,
+     "#3ec7d8"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "US"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "US"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-48",
+  "n": 48,
+  "niche": "Foil",
+  "mkt": "US",
+  "title": "Flat Water? Pump Session Hydrofoil Foil Surfing",
+  "brand": "Foil Riders Club",
+  "bullet1": "Funny hydrofoil design for foil surfers, wing foilers and pump foilers who love to glide.",
+  "bullet2": "Made for foil sessions, downwind runs, flat water pumping and the beach after.",
+  "description": "Hydrofoil design for foil surfers, wing foilers, pump foilers and downwind riders. For every session on the foil board, from flat water to ocean swell.",
+  "spec": {
+   "lines": [
+    [
+     "FLAT WATER?",
+     "Anton",
+     1000,
+     "#ffffff"
+    ],
+    [
+     "PUMP SESSION.",
+     "Anton",
+     1000,
+     "#3ec7d8"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "US"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "US"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-49",
+  "n": 49,
+  "niche": "Foil",
+  "mkt": "US",
+  "title": "Foil Dad Like A Normal Dad Just Airborne",
+  "brand": "Foil Riders Club",
+  "bullet1": "Funny hydrofoil design for foil surfers, wing foilers and pump foilers who love to glide.",
+  "bullet2": "Made for foil sessions, downwind runs, flat water pumping and the beach after.",
+  "description": "Hydrofoil design for foil surfers, wing foilers, pump foilers and downwind riders. For every session on the foil board, from flat water to ocean swell.",
+  "spec": {
+   "lines": [
+    [
+     "FOIL DAD",
+     "Anton",
+     1000,
+     "#3ec7d8"
+    ],
+    [
+     "like a normal dad,",
+     "Marker",
+     400,
+     "#ffffff"
+    ],
+    [
+     "just airborne",
+     "Marker",
+     400,
+     "#ffffff"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "US"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "US"
+   ]
+  },
+  "translate": false
+ },
+ {
+  "id": "b1-50",
+  "n": 50,
+  "niche": "Foil",
+  "mkt": "US",
+  "title": "Flying Over The Chop Hydrofoil Foil Surfing",
+  "brand": "Foil Riders Club",
+  "bullet1": "Funny hydrofoil design for foil surfers, wing foilers and pump foilers who love to glide.",
+  "bullet2": "Made for foil sessions, downwind runs, flat water pumping and the beach after.",
+  "description": "Hydrofoil design for foil surfers, wing foilers, pump foilers and downwind riders. For every session on the foil board, from flat water to ocean swell.",
+  "spec": {
+   "lines": [
+    [
+     "FLYING",
+     "Anton",
+     1000,
+     "#ffffff"
+    ],
+    [
+     "OVER",
+     "Anton",
+     1000,
+     "#ffffff"
+    ],
+    [
+     "THE CHOP",
+     "Anton",
+     1000,
+     "#3ec7d8"
+    ]
+   ]
+  },
+  "products": {
+   "STANDARD_TSHIRT": [
+    "US"
+   ],
+   "STANDARD_PULLOVER_HOODIE": [
+    "US"
+   ]
+  },
+  "translate": false
+ }
+]

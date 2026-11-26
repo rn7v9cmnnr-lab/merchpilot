@@ -156,7 +156,10 @@
   const saveQueue = (q) => ls.set('queue', q);
   function enqueue(items) {
     const q = queue();
-    for (const it of [].concat(items)) q.push({ id: it.id || crypto.randomUUID(), status: 'pending', added: new Date().toISOString(), ...it });
+    for (const it of [].concat(items)) {
+      const l = window.__MP_LINT ? window.__MP_LINT(it, cfg().lintExtra || []) : { ok: true, issues: [] };
+      q.push({ id: it.id || crypto.randomUUID(), status: l.ok ? 'pending' : 'blocked', added: new Date().toISOString(), lint: l.issues, ...it });
+    }
     saveQueue(q); ui.refresh(); return q.filter((x) => x.status === 'pending').length;
   }
   const usedToday = () => (ls.get('usage', {})[today()] || 0);
@@ -199,10 +202,12 @@
   }
   async function fillAndPublish(item, { dryRun = false } = {}) {
     const c = cfg();
+    const l = window.__MP_LINT ? window.__MP_LINT(item, c.lintExtra || []) : { ok: true, issues: [] };
+    if (!l.ok) throw new Error('Prüfung: ' + l.issues.filter((x) => x.lvl === 'error').map((x) => `${x.field}: ${x.word || x.why}`).join('; '));
     const blob = item.imageDataUrl ? await (await fetch(item.imageDataUrl)).blob() : await render(item.spec);
     await dropArtwork(blob);
     await selectProducts(item.products || c.products);
-    if (c.translate) $('#translation-request-yes')?.click();
+    if (item.translate ?? c.translate) $('#translation-request-yes')?.click(); else $('#translation-request-no')?.click();
     await sleep(500);
     setVal($('#designCreator-productEditor-title'), item.title.slice(0, 60));
     setVal($('#designCreator-productEditor-brandName'), item.brand.slice(0, 50));
@@ -278,7 +283,24 @@
     return { mount, refresh, status };
   })();
 
-  window.MerchPilot = { version: '0.2.0', stats, monthly, sales, designs, cleanupCandidates, render, enqueue, queue, saveQueue, run, fillAndPublish, config: (c) => (c ? ls.set('cfg', { ...ls.get('cfg', {}), ...c }) : cfg()), usedToday };
+  (function captureApi() {
+    const send = XMLHttpRequest.prototype.send, open = XMLHttpRequest.prototype.open;
+    const KEEP = /(Publish|Submit|Create|Save|Delete|Update|Upsert|Product|Listing|assetUrlPut)/i, SKIP = /(Get|Find|metrics|translations|ratelimiter|assetUrlGet)/i;
+    XMLHttpRequest.prototype.open = function (m, u) { this.__mpU = u; this.__mpM = m; return open.apply(this, arguments); };
+    XMLHttpRequest.prototype.send = function (body) {
+      const u = String(this.__mpU || '');
+      if (u.includes('/api/') && KEEP.test(u) && !SKIP.test(u.split('/').pop())) {
+        this.addEventListener('loadend', () => {
+          const cap = ls.get('apiCapture', []);
+          cap.push({ at: new Date().toISOString(), m: this.__mpM, u: u.split('?')[0], st: this.status, body: typeof body === 'string' ? body.slice(0, 20000) : null, resp: (this.responseText || '').slice(0, 4000) });
+          ls.set('apiCapture', cap.slice(-40));
+        });
+      }
+      return send.apply(this, arguments);
+    };
+  })();
+
+  window.MerchPilot = { version: '0.4.0', apiCapture: () => ls.get('apiCapture', []), lint: (it) => window.__MP_LINT(it, cfg().lintExtra || []), stats, monthly, sales, designs, cleanupCandidates, render, enqueue, queue, saveQueue, run, fillAndPublish, config: (c) => (c ? ls.set('cfg', { ...ls.get('cfg', {}), ...c }) : cfg()), usedToday };
   ui.mount();
 
   // Autopilot fortsetzen (nach Seitenwechsel oder täglichem Alarm)

@@ -121,7 +121,7 @@
   // ---------- Warteschlange ----------
   async function queue() {
     const q = MP.queue();
-    const pill = (s) => `<span class="pill ${s === 'done' ? 'ok' : s === 'error' ? 'err' : 'wait'}">${{ pending: 'wartet', done: 'hochgeladen', error: 'Fehler' }[s] || s}</span>`;
+    const pill = (s) => `<span class="pill ${s === 'done' ? 'ok' : s === 'error' ? 'err' : 'wait'}">${{ pending: 'wartet', done: 'hochgeladen', error: 'Fehler', blocked: 'gesperrt (Prüfung)' }[s] || s}</span>`;
     view.innerHTML = `<div class="mp-card">
       <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
         <b>${q.filter((x) => x.status === 'pending').length} wartend</b><span class="muted">· ca. ${Math.floor(MP.config().dailyProductLimit / Object.values(MP.config().products).reduce((s, m) => s + m.length, 0))} Designs/Tag möglich</span>
@@ -131,7 +131,7 @@
         <button class="btn sec" id="mp-clear">Erledigte entfernen</button></div>
       <table><tr><th></th><th>Titel</th><th>Marke</th><th>Status</th><th></th></tr>
       ${q.slice().reverse().map((x) => `<tr><td><canvas class="thumb" data-p="${x.id}" width="90" height="108"></canvas></td>
-        <td>${esc(x.title)}<div class="muted">${esc(x.niche || '')}</div>${x.error ? `<div class="pill err">${esc(x.error)}</div>` : ''}</td>
+        <td>${esc(x.title)}<div class="muted">${esc(x.niche || '')}</div>${x.error ? `<div class="pill err">${esc(x.error)}</div>` : ''}${(x.lint || []).map((i) => `<div class="pill ${i.lvl === 'error' ? 'err' : 'wait'}">${esc(i.field)}: ${esc(i.word || '')} – ${esc(i.why)}</div>`).join(' ')}</td>
         <td>${esc(x.brand)}</td><td>${pill(x.status)}</td><td><button class="btn sec" data-rm="${x.id}">✕</button></td></tr>`).join('') || '<tr><td colspan=5 class="muted">Leer – im Chat „neue Designs“ schreiben.</td></tr>'}</table></div>
       <div class="mp-card" style="margin-top:12px"><div class="mp-l">JSON importieren (Liste von Designs)</div>
       <textarea id="mp-json" rows="4" placeholder='[{"title":"…","brand":"…","bullet1":"…","bullet2":"…","description":"…","spec":{"lines":[{"text":"…","font":"Anton","size":600,"color":"#fff"}]}}]'></textarea>
