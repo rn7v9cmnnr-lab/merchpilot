@@ -24,7 +24,7 @@
   document.getElementById('mp-box')?.remove();
   const root = document.createElement('div');
   root.id = 'mp-app';
-  document.body.innerHTML = ''; document.body.appendChild(root);
+  document.body.innerHTML = ''; document.body.appendChild(root); MP.importInput && MP.importInput();
   const css = document.createElement('style');
   css.textContent = `
   body{margin:0;background:#f6f7f9;font:14px/1.45 system-ui,-apple-system,sans-serif;color:#1d2330}
@@ -159,7 +159,7 @@
     // Vorschaubilder
     for (const c of view.querySelectorAll('canvas[data-p]')) {
       const it = q.find((x) => x.id === c.dataset.p); if (!it) continue;
-      const blob = it.imageDataUrl ? await (await fetch(it.imageDataUrl)).blob() : it.spec ? await MP.render(it.spec) : null;
+      const blob = it.imageKey ? await MP.imgGet(it.imageKey) : it.imageDataUrl ? await (await fetch(it.imageDataUrl)).blob() : it.spec ? await MP.render(it.spec) : null;
       if (!blob) continue;
       const img = await createImageBitmap(blob); const g = c.getContext('2d'); g.fillStyle = '#222'; g.fillRect(0, 0, 90, 108); g.drawImage(img, 0, 0, 90, 108);
     }

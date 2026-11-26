@@ -204,6 +204,30 @@ window.__MP_FONTS={
     return new Promise((r) => c.toBlob(r, 'image/png'));
   }
 
+  // ---------- Bildablage (IndexedDB, bleibt im Browser) ----------
+  const idb = () => new Promise((res, rej) => { const r = indexedDB.open('merchpilot', 1); r.onupgradeneeded = () => r.result.createObjectStore('images'); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); });
+  async function imgPut(key, blob) { const db = await idb(); return new Promise((res, rej) => { const tx = db.transaction('images', 'readwrite'); tx.objectStore('images').put(blob, key); tx.oncomplete = () => res(key); tx.onerror = () => rej(tx.error); }); }
+  async function imgGet(key) { const db = await idb(); return new Promise((res, rej) => { const tx = db.transaction('images', 'readonly'); const q = tx.objectStore('images').get(key); q.onsuccess = () => res(q.result || null); q.onerror = () => rej(q.error); }); }
+  async function imgKeys() { const db = await idb(); return new Promise((res) => { const tx = db.transaction('images', 'readonly'); const q = tx.objectStore('images').getAllKeys(); q.onsuccess = () => res(q.result || []); }); }
+  // Unsichtbares Datei-Feld: Bilder per Dateiauswahl in die Ablage übernehmen (Dateiname = Schlüssel)
+  function importInput() {
+    let inp = document.getElementById('mp-import');
+    if (inp) return inp;
+    inp = document.createElement('input'); inp.type = 'file'; inp.id = 'mp-import'; inp.multiple = true; inp.accept = 'image/png,application/json';
+    inp.style.cssText = 'position:fixed;left:-9999px;top:0';
+    inp.addEventListener('change', async () => {
+      const done = [];
+      for (const f of inp.files) {
+        if (f.name.endsWith('.json')) { const items = JSON.parse(await f.text()); enqueue(items.items || items, { status: 'review' }); done.push(f.name); }
+        else { await imgPut(f.name, f); done.push(f.name); }
+      }
+      ls.set('lastImport', { at: new Date().toISOString(), files: done });
+      inp.value = '';
+      ui.status(`${done.length} Dateien übernommen`);
+    });
+    document.body.appendChild(inp); return inp;
+  }
+
   // ---------- Warteschlange ----------
   /* Item: { id, spec | imageDataUrl, title, brand, bullet1, bullet2, description, niche, products? } */
   const queue = () => ls.get('queue', []);
@@ -258,7 +282,8 @@ window.__MP_FONTS={
     const c = cfg();
     const l = window.__MP_LINT ? window.__MP_LINT(item, c.lintExtra || []) : { ok: true, issues: [] };
     if (!l.ok) throw new Error('Prüfung: ' + l.issues.filter((x) => x.lvl === 'error').map((x) => `${x.field}: ${x.word || x.why}`).join('; '));
-    const blob = item.imageDataUrl ? await (await fetch(item.imageDataUrl)).blob() : await render(item.spec);
+    const blob = item.imageKey ? await imgGet(item.imageKey) : item.imageDataUrl ? await (await fetch(item.imageDataUrl)).blob() : await render(item.spec);
+    if (!blob) throw new Error('Bild fehlt in der Ablage: ' + item.imageKey);
     await dropArtwork(blob);
     await selectProducts(item.products || c.products);
     if (item.translate ?? c.translate) $('#translation-request-yes')?.click(); else $('#translation-request-no')?.click();
@@ -354,8 +379,9 @@ window.__MP_FONTS={
     };
   })();
 
-  window.MerchPilot = { version: '0.5.0', apiCapture: () => ls.get('apiCapture', []), lint: (it) => window.__MP_LINT(it, cfg().lintExtra || []), stats, monthly, sales, designs, cleanupCandidates, render, enqueue, queue, saveQueue, run, fillAndPublish, config: (c) => (c ? ls.set('cfg', { ...ls.get('cfg', {}), ...c }) : cfg()), usedToday };
+  window.MerchPilot = { version: '0.6.0', imgGet, imgPut, imgKeys, importInput, apiCapture: () => ls.get('apiCapture', []), lint: (it) => window.__MP_LINT(it, cfg().lintExtra || []), stats, monthly, sales, designs, cleanupCandidates, render, enqueue, queue, saveQueue, run, fillAndPublish, config: (c) => (c ? ls.set('cfg', { ...ls.get('cfg', {}), ...c }) : cfg()), usedToday };
   ui.mount();
+  importInput();
 
   // Autopilot fortsetzen (nach Seitenwechsel oder täglichem Alarm)
   if (location.pathname.startsWith('/designs/new') && (ls.get('resume') || location.hash === '#mp-auto')) {
@@ -523,7 +549,7 @@ window.__MP_FONTS={
   document.getElementById('mp-box')?.remove();
   const root = document.createElement('div');
   root.id = 'mp-app';
-  document.body.innerHTML = ''; document.body.appendChild(root);
+  document.body.innerHTML = ''; document.body.appendChild(root); MP.importInput && MP.importInput();
   const css = document.createElement('style');
   css.textContent = `
   body{margin:0;background:#f6f7f9;font:14px/1.45 system-ui,-apple-system,sans-serif;color:#1d2330}
@@ -658,7 +684,7 @@ window.__MP_FONTS={
     // Vorschaubilder
     for (const c of view.querySelectorAll('canvas[data-p]')) {
       const it = q.find((x) => x.id === c.dataset.p); if (!it) continue;
-      const blob = it.imageDataUrl ? await (await fetch(it.imageDataUrl)).blob() : it.spec ? await MP.render(it.spec) : null;
+      const blob = it.imageKey ? await MP.imgGet(it.imageKey) : it.imageDataUrl ? await (await fetch(it.imageDataUrl)).blob() : it.spec ? await MP.render(it.spec) : null;
       if (!blob) continue;
       const img = await createImageBitmap(blob); const g = c.getContext('2d'); g.fillStyle = '#222'; g.fillRect(0, 0, 90, 108); g.drawImage(img, 0, 0, 90, 108);
     }
