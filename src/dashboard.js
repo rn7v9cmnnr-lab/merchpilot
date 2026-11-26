@@ -63,7 +63,7 @@
   let tab = sessionStorage.getItem('mp.tab') || 'overview';
 
   root.innerHTML = `<div class="mp-top"><h1>MerchPilot</h1><div class="mp-tabs">
-      <button data-t="overview">Übersicht</button><button data-t="strategy">Strategie</button><button data-t="pricing">Preise & Werbung</button>
+      <button data-t="overview">Übersicht</button><button data-t="strategy">Strategie</button><button data-t="control">Steuerung</button><button data-t="pricing">Preise & Werbung</button>
       <button data-t="designs">Designs</button><button data-t="queue">Warteschlange</button><button data-t="settings">Einstellungen</button></div>
       <span style="flex:1"></span><span class="mp-focus">Fokus: T-Shirt · Amazon.de</span><a href="/dashboard" class="muted">Merch ↗</a></div><div id="mp-view"></div>`;
   root.querySelector('.mp-tabs').onclick = (e) => { const t = e.target.dataset.t; if (t) { tab = t; sessionStorage.setItem('mp.tab', t); show(); } };
@@ -72,7 +72,7 @@
   function show() {
     root.querySelectorAll('.mp-tabs button').forEach((b) => b.classList.toggle('on', b.dataset.t === tab));
     const plan = window.__MP_PLAN || {};
-    ({ overview, designs, queue, settings, strategy: () => plan.strategy(view), pricing: () => plan.pricing(view) })[tab]();
+    ({ overview, designs, queue, settings, strategy: () => plan.strategy(view), pricing: () => plan.pricing(view), control: () => window.__MP_RULES.view(view) })[tab]();
   }
 
   // ---------- Übersicht ----------
