@@ -170,14 +170,14 @@
    "type": "Embleme / Badges",
    "cost": "0 €",
    "status": "geplant",
-   "note": "Vereins-Look: Kreis- oder Wappenform, Vektor-Icon (Schläger, Kegel, Karten, Griff), Jahreszahl. Wird im Renderer gebaut."
+   "note": "Vereins-Look: Kreis- oder Wappenform mit selbst gezeichnetem Vektor-Symbol (Schläger, Kegel, Karten, Griff). Kein KI-Dienst, kein Key nötig."
   },
   {
    "phase": "Ab Woche 5",
    "type": "KI-Grafiken",
-   "cost": "≈ 0,04–0,19 $ pro Bild",
+   "cost": "zuerst Canva (im Abo), OpenAI nur falls nötig",
    "status": "nur für Gewinner",
-   "note": "Illustrationen für Nischen mit ≥ 2 Verkäufen; OpenAI-API-Key mit Guthaben nötig."
+   "note": "Erst 2–3 Canva-Probebilder testen; kommerzielle Nutzung je Anbieter prüfen. OpenAI-Key (≈ 0,04–0,19 $/Bild) nur, wenn Canva nicht reicht."
   }
  ],
  "pricing": {
