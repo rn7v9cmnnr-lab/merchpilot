@@ -203,11 +203,14 @@
         <label>Pause min (s)<input type="number" id="mp-d0" value="${c.delaySec[0]}"></label>
         <label>Pause max (s)<input type="number" id="mp-d1" value="${c.delaySec[1]}"></label></div>
       <label style="display:block;margin-top:10px"><input type="checkbox" id="mp-tr" ${c.translate ? 'checked' : ''}> Amazon übersetzt Listings automatisch</label>
+      <div class="mp-l" style="margin-top:14px">Autopilot</div>
+      <label style="display:block"><input type="checkbox" id="mp-as" ${c.autoStart ? 'checked' : ''}> Täglich ab <input type="number" id="mp-ah" value="${c.autoStartHour}" style="width:50px"> Uhr bis zum Tageslimit hochladen (startet, sobald eine Merch-Übersichtsseite offen ist)</label>
+      <label style="display:block;margin-top:6px">Automatisch freigeben nach <input type="number" id="mp-aa" value="${c.autoApproveH}" style="width:50px"> Stunden (0 = nur manuell). Gesperrte Designs (Prüfung) werden nie freigegeben.</label>
       <button class="btn" id="mp-save" style="margin-top:12px">Speichern</button>
       <p class="muted">Täglicher Autopilot: Klick aufs MerchPilot-Icon in der Chrome-Leiste (Badge „ON“). Chrome und der Rechner müssen laufen.</p></div>`;
     view.querySelector('#mp-save').onclick = () => {
       try {
-        MP.config({ products: JSON.parse(view.querySelector('#mp-prod').value), dailyProductLimit: +view.querySelector('#mp-lim').value, delaySec: [+view.querySelector('#mp-d0').value, +view.querySelector('#mp-d1').value], translate: view.querySelector('#mp-tr').checked });
+        MP.config({ products: JSON.parse(view.querySelector('#mp-prod').value), dailyProductLimit: +view.querySelector('#mp-lim').value, delaySec: [+view.querySelector('#mp-d0').value, +view.querySelector('#mp-d1').value], translate: view.querySelector('#mp-tr').checked, autoStart: view.querySelector('#mp-as').checked, autoStartHour: +view.querySelector('#mp-ah').value, autoApproveH: +view.querySelector('#mp-aa').value });
         view.querySelector('#mp-save').textContent = 'Gespeichert ✓';
       } catch (e) { alert('Produkte-JSON fehlerhaft'); }
     };

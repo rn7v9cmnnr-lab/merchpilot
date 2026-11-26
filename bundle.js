@@ -70,7 +70,10 @@ window.__MP_FONTS={
     translate: false,        // nur Amazon.de, Listing ist bereits deutsch
     colors: ['black', 'navy', 'asphalt', 'dark_heather'], // helle Motive → dunkle Shirts
     prices: { DE: 19.99 },   // Startpreis laut Preisstrategie
-    minRoyalty: 3.5,         // Sicherheitsnetz: nie unter 3,50 € Tantieme veröffentlichen
+    minRoyalty: 3.5,
+    autoApproveH: 12,        // Designs „zur Freigabe“ werden nach X Stunden automatisch freigegeben (0 = aus)
+    autoStart: true,         // täglich ab autoStartHour die Warteschlange abarbeiten, sobald eine Merch-Seite offen ist
+    autoStartHour: 10,         // Sicherheitsnetz: nie unter 3,50 € Tantieme veröffentlichen
   };
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   const rnd = (a, b) => a + Math.random() * (b - a);
@@ -375,7 +378,7 @@ window.__MP_FONTS={
     if (!item) { ls.set('resume', false); return log('Warteschlange leer.'); }
     if (usedToday() + productCount(item.products || c.products) > c.dailyProductLimit) { ls.set('resume', false); return log(`Tageslimit erreicht (${usedToday()}/${c.dailyProductLimit}).`); }
     if (max <= 0) { ls.set('resume', false); return; }
-    ls.set('resume', true);
+    ls.set('resume', true); ls.set('runLock', Date.now());
     log('Lade hoch:', item.title);
     try {
       const r = await fillAndPublish(item, { dryRun });
@@ -406,7 +409,7 @@ window.__MP_FONTS={
     const mount = () => { document.body.appendChild(box); refresh(); };
     box.addEventListener('click', (e) => {
       if (e.target.closest('#mp-h')) { const b = box.querySelector('#mp-body'); b.style.display = b.style.display === 'none' ? 'block' : 'none'; }
-      const a = e.target.dataset?.a; if (a === 'run') run(); if (a === 'stop') { ls.set('resume', false); status('Gestoppt.'); }
+      const a = e.target.dataset?.a; if (a === 'run') run(); if (a === 'stop') { ls.set('resume', false); ls.set('autoSkip', today()); window.dispatchEvent(new Event('mp-stop')); status('Gestoppt (Autopilot ruht bis morgen).'); }
     });
     function refresh() {
       const q = queue(); const p = q.filter((x) => x.status === 'pending').length, d = q.filter((x) => x.status === 'done').length, er = q.filter((x) => x.status === 'error').length;
@@ -435,9 +438,28 @@ window.__MP_FONTS={
     };
   })();
 
-  window.MerchPilot = { version: '0.8.0', imgGet, imgPut, imgKeys, importInput, apiCapture: () => ls.get('apiCapture', []), lint: (it) => window.__MP_LINT(it, cfg().lintExtra || []), stats, monthly, sales, designs, cleanupCandidates, render, enqueue, queue, saveQueue, run, fillAndPublish, setColors, setPrices, config: (c) => (c ? ls.set('cfg', { ...ls.get('cfg', {}), ...c }) : cfg()), usedToday };
+  window.MerchPilot = { version: '0.9.0', imgGet, imgPut, imgKeys, importInput, apiCapture: () => ls.get('apiCapture', []), lint: (it) => window.__MP_LINT(it, cfg().lintExtra || []), stats, monthly, sales, designs, cleanupCandidates, render, enqueue, queue, saveQueue, run, fillAndPublish, setColors, setPrices, config: (c) => (c ? ls.set('cfg', { ...ls.get('cfg', {}), ...c }) : cfg()), usedToday };
   ui.mount();
   importInput();
+
+  // Automatische Freigabe: geprüfte Designs, die länger als autoApproveH in „zur Freigabe“ liegen
+  (function autoApprove() {
+    const c = cfg(); if (!c.autoApproveH) return;
+    const q = queue(); let n = 0;
+    for (const x of q) if (x.status === 'review' && Date.now() - new Date(x.added).getTime() > c.autoApproveH * 3600e3 && !(x.lint || []).some((i) => i.lvl === 'error')) { x.status = 'pending'; x.approvedBy = 'auto'; n++; }
+    if (n) { saveQueue(q); log(`${n} Designs automatisch freigegeben.`); }
+  })();
+  // Tagesstart: sobald eine Merch-Seite offen ist und heute noch Kontingent frei ist
+  (function autoStart() {
+    const c = cfg(); if (!c.autoStart || location.pathname.startsWith('/designs/new')) return;
+    const pend = queue().filter((x) => x.status === 'pending').length;
+    const lockFresh = Date.now() - (ls.get('runLock', 0) || 0) < 10 * 60e3;
+    if (!pend || usedToday() >= c.dailyProductLimit || new Date().getHours() < c.autoStartHour || lockFresh || ls.get('autoSkip') === today()) return;
+    if (!/^\/(dashboard|resource\/merchpilot)/.test(location.pathname)) return; // nur von Übersichtsseiten aus, nie mitten in der Arbeit
+    ui.status(`Autopilot: ${Math.min(pend, c.dailyProductLimit - usedToday())} Uploads starten in 30 s – „■ Stop“ bricht für heute ab.`);
+    const t = setTimeout(() => { ls.set('resume', true); location.href = '/designs/new'; }, 30000);
+    window.addEventListener('mp-stop', () => { clearTimeout(t); ls.set('autoSkip', today()); }, { once: true });
+  })();
 
   // Autopilot fortsetzen (nach Seitenwechsel oder täglichem Alarm)
   if (location.pathname.startsWith('/designs/new') && (ls.get('resume') || location.hash === '#mp-auto')) {
@@ -919,11 +941,14 @@ window.__MP_FONTS={
         <label>Pause min (s)<input type="number" id="mp-d0" value="${c.delaySec[0]}"></label>
         <label>Pause max (s)<input type="number" id="mp-d1" value="${c.delaySec[1]}"></label></div>
       <label style="display:block;margin-top:10px"><input type="checkbox" id="mp-tr" ${c.translate ? 'checked' : ''}> Amazon übersetzt Listings automatisch</label>
+      <div class="mp-l" style="margin-top:14px">Autopilot</div>
+      <label style="display:block"><input type="checkbox" id="mp-as" ${c.autoStart ? 'checked' : ''}> Täglich ab <input type="number" id="mp-ah" value="${c.autoStartHour}" style="width:50px"> Uhr bis zum Tageslimit hochladen (startet, sobald eine Merch-Übersichtsseite offen ist)</label>
+      <label style="display:block;margin-top:6px">Automatisch freigeben nach <input type="number" id="mp-aa" value="${c.autoApproveH}" style="width:50px"> Stunden (0 = nur manuell). Gesperrte Designs (Prüfung) werden nie freigegeben.</label>
       <button class="btn" id="mp-save" style="margin-top:12px">Speichern</button>
       <p class="muted">Täglicher Autopilot: Klick aufs MerchPilot-Icon in der Chrome-Leiste (Badge „ON“). Chrome und der Rechner müssen laufen.</p></div>`;
     view.querySelector('#mp-save').onclick = () => {
       try {
-        MP.config({ products: JSON.parse(view.querySelector('#mp-prod').value), dailyProductLimit: +view.querySelector('#mp-lim').value, delaySec: [+view.querySelector('#mp-d0').value, +view.querySelector('#mp-d1').value], translate: view.querySelector('#mp-tr').checked });
+        MP.config({ products: JSON.parse(view.querySelector('#mp-prod').value), dailyProductLimit: +view.querySelector('#mp-lim').value, delaySec: [+view.querySelector('#mp-d0').value, +view.querySelector('#mp-d1').value], translate: view.querySelector('#mp-tr').checked, autoStart: view.querySelector('#mp-as').checked, autoStartHour: +view.querySelector('#mp-ah').value, autoApproveH: +view.querySelector('#mp-aa').value });
         view.querySelector('#mp-save').textContent = 'Gespeichert ✓';
       } catch (e) { alert('Produkte-JSON fehlerhaft'); }
     };
