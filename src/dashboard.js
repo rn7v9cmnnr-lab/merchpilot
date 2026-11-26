@@ -44,7 +44,18 @@
   .pill.ok{background:#d7f3e6;color:#0a7d5a}.pill.err{background:#fde2e0;color:#b3261e}.pill.wait{background:#fff3cd;color:#8a6d00}
   .muted{color:#778}.bar{fill:#0a7d5a}.bar.cur{fill:#7cc4a8}
   textarea,input[type=text],input[type=number]{width:100%;box-sizing:border-box;border:1px solid #d5d9e0;border-radius:8px;padding:8px;font:12px ui-monospace,monospace}
-  .thumb{width:46px;height:55px;background:#222;border-radius:4px;object-fit:contain}`;
+  .thumb{width:46px;height:55px;background:#222;border-radius:4px;object-fit:contain}
+  .mp-top h1{font-weight:800;letter-spacing:-.02em}.mp-focus{background:#eaf6f0;color:#0a7d5a;font-weight:600;font-size:12px;padding:4px 10px;border-radius:20px}
+  .mp-hero{background:linear-gradient(135deg,#10231c,#1d3b30);color:#eef}.mp-hero .mp-l,.mp-hero .muted{color:#9fc9b6}
+  .mp-list{margin:6px 0 8px;padding-left:18px}.mp-list li{margin:2px 0}
+  .mp-bar{height:8px;background:#eef0f3;border-radius:6px;overflow:hidden}.mp-bar div{height:100%;background:#0a7d5a}
+  .mp-step{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid #eef0f3}
+  .mp-pill2{flex:0 0 86px;font-size:11px;font-weight:700;color:#2e6bd6;background:#e9f0fd;border-radius:6px;padding:3px 6px;text-align:center}
+  .mp-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .mp-prio{color:#fff;font-weight:800;font-size:12px;border-radius:6px;padding:2px 8px}
+  .mp-camp{border:1px solid #eef0f3;border-radius:10px;padding:10px 12px;margin-top:8px}
+  .mp-campgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:8px 0;font-size:13px}
+  .pill{margin:2px 0}`;
   document.head.appendChild(css);
 
   const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -52,15 +63,16 @@
   let tab = sessionStorage.getItem('mp.tab') || 'overview';
 
   root.innerHTML = `<div class="mp-top"><h1>MerchPilot</h1><div class="mp-tabs">
-      <button data-t="overview">Übersicht</button><button data-t="designs">Designs</button>
-      <button data-t="queue">Warteschlange</button><button data-t="settings">Einstellungen</button></div>
-      <span style="flex:1"></span><a href="/designs/new" class="muted">Create ↗</a></div><div id="mp-view"></div>`;
+      <button data-t="overview">Übersicht</button><button data-t="strategy">Strategie</button><button data-t="pricing">Preise & Werbung</button>
+      <button data-t="designs">Designs</button><button data-t="queue">Warteschlange</button><button data-t="settings">Einstellungen</button></div>
+      <span style="flex:1"></span><span class="mp-focus">Fokus: T-Shirt · Amazon.de</span><a href="/dashboard" class="muted">Merch ↗</a></div><div id="mp-view"></div>`;
   root.querySelector('.mp-tabs').onclick = (e) => { const t = e.target.dataset.t; if (t) { tab = t; sessionStorage.setItem('mp.tab', t); show(); } };
   const view = root.querySelector('#mp-view');
 
   function show() {
     root.querySelectorAll('.mp-tabs button').forEach((b) => b.classList.toggle('on', b.dataset.t === tab));
-    ({ overview, designs, queue, settings })[tab]();
+    const plan = window.__MP_PLAN || {};
+    ({ overview, designs, queue, settings, strategy: () => plan.strategy(view), pricing: () => plan.pricing(view) })[tab]();
   }
 
   // ---------- Übersicht ----------
@@ -121,10 +133,10 @@
   // ---------- Warteschlange ----------
   async function queue() {
     const q = MP.queue();
-    const pill = (s) => `<span class="pill ${s === 'done' ? 'ok' : s === 'error' ? 'err' : 'wait'}">${{ review: 'zur Freigabe', pending: 'freigegeben', done: 'hochgeladen', error: 'Fehler', blocked: 'gesperrt (Prüfung)' }[s] || s}</span>`;
+    const pill = (s) => `<span class="pill ${s === 'done' ? 'ok' : s === 'error' ? 'err' : 'wait'}">${{ review: 'zur Freigabe', parked: 'geparkt', pending: 'freigegeben', done: 'hochgeladen', error: 'Fehler', blocked: 'gesperrt (Prüfung)' }[s] || s}</span>`;
     view.innerHTML = `<div class="mp-card">
       <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
-        <b>${q.filter((x) => x.status === 'pending').length} wartend</b><span class="muted">· ca. ${Math.floor(MP.config().dailyProductLimit / Object.values(MP.config().products).reduce((s, m) => s + m.length, 0))} Designs/Tag möglich</span>
+        <b>${q.filter((x) => x.status === 'pending').length} wartend</b><span class="muted">· ${q.filter((x) => x.status === 'review').length} zur Freigabe · ${q.filter((x) => x.status === 'parked').length} geparkt · Limit ${MP.config().dailyProductLimit} Produkte/Tag</span>
         <span style="flex:1"></span>
         <button class="btn sec" id="mp-approve">✓ Alle zur Freigabe freigeben (${q.filter((x) => x.status === 'review').length})</button>
         <button class="btn" id="mp-run">▶ Jetzt starten</button>

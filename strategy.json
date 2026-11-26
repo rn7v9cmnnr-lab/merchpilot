@@ -1,0 +1,345 @@
+{
+ "updated": "2026-11-26",
+ "goal": {
+  "text": "≥ 15 Verkäufe aus neuen Designs bis 24.1.2027 bei ≥ 3,90 € Royalty pro Stück",
+  "sales": 15,
+  "deadline": "2027-01-24",
+  "start": "2026-11-30"
+ },
+ "niches": [
+  {
+   "key": "padel",
+   "name": "Padel",
+   "prio": "A",
+   "demand": 7,
+   "competition": 2,
+   "results": "162",
+   "bsr": "5 / 12",
+   "markets": "DE",
+   "designs": 9,
+   "why": "Wenig Angebot, sichtbare Nachfrage, Sport wächst in DE und UK",
+   "keywords": [
+    "Padel",
+    "Padel Tennis",
+    "Padelspieler",
+    "Pala",
+    "Doppel"
+   ],
+   "insider": [
+    "Lob",
+    "Vibora",
+    "Smash",
+    "Por Tres",
+    "Glaswand"
+   ],
+   "avoid": [
+    "Bandeja (Marke DE)"
+   ]
+  },
+  {
+   "key": "bouldern",
+   "name": "Bouldern",
+   "prio": "A",
+   "demand": 8,
+   "competition": 9,
+   "results": "≈ 30.000",
+   "bsr": "6 / 7",
+   "markets": "DE",
+   "designs": 9,
+   "why": "Hohe Nachfrage, viel Konkurrenz – nur spitze Insider-Sprüche",
+   "keywords": [
+    "Bouldern",
+    "Boulderhalle",
+    "Klettern"
+   ],
+   "insider": [
+    "Chalk",
+    "Crimp",
+    "Beta",
+    "Projekt",
+    "Flash"
+   ],
+   "avoid": []
+  },
+  {
+   "key": "kegeln",
+   "name": "Kegeln",
+   "prio": "B",
+   "demand": 5,
+   "competition": 6,
+   "results": "≈ 10.000",
+   "bsr": "1 / 6",
+   "markets": "DE",
+   "designs": 7,
+   "why": "Vereins- und Stammtischmarkt, rein deutsch",
+   "keywords": [
+    "Kegeln",
+    "Kegelclub",
+    "Kegelbruder"
+   ],
+   "insider": [
+    "Alle Neune",
+    "Pudel",
+    "Kranz",
+    "Kegeltour"
+   ],
+   "avoid": []
+  },
+  {
+   "key": "karten",
+   "name": "Doppelkopf · Skat · Schafkopf",
+   "prio": "B",
+   "demand": 4,
+   "competition": 4,
+   "results": "665–2.000",
+   "bsr": "1 / 6",
+   "markets": "DE",
+   "designs": 9,
+   "why": "Kartenrunden, deutschsprachig, kaum Profi-Konkurrenz",
+   "keywords": [
+    "Doppelkopf",
+    "Skat",
+    "Schafkopf",
+    "Kartenrunde"
+   ],
+   "insider": [
+    "Re",
+    "Kontra",
+    "Solo",
+    "Grand",
+    "Sauspiel"
+   ],
+   "avoid": []
+  },
+  {
+   "key": "wingfoil",
+   "name": "Wingfoil",
+   "prio": "C",
+   "demand": 2,
+   "competition": 8,
+   "results": "> 1.000",
+   "bsr": "0 / 2",
+   "markets": "–",
+   "designs": 0,
+   "why": "Übersättigt",
+   "keywords": [],
+   "insider": [],
+   "avoid": []
+  },
+  {
+   "key": "kampfsport",
+   "name": "Wing Chun, Escrima, Kyokushin",
+   "prio": "C",
+   "demand": 1,
+   "competition": 5,
+   "results": "394–7.000",
+   "bsr": "0 / 0–2",
+   "markets": "–",
+   "designs": 0,
+   "why": "Keine Verkäufe sichtbar",
+   "keywords": [],
+   "insider": [],
+   "avoid": []
+  },
+  {
+   "key": "fun",
+   "name": "Roundnet, Discgolf, Kubb",
+   "prio": "C",
+   "demand": 1,
+   "competition": 4,
+   "results": "468–30.000",
+   "bsr": "0 / 0–1",
+   "markets": "–",
+   "designs": 0,
+   "why": "Keine Verkäufe sichtbar",
+   "keywords": [],
+   "insider": [],
+   "avoid": []
+  }
+ ],
+ "designTypes": [
+  {
+   "phase": "Jetzt",
+   "type": "Text-Designs",
+   "cost": "0 €",
+   "status": "50 fertig",
+   "note": "Insider-Spruch trägt das Motiv; schnellster Test, welche Nische zieht."
+  },
+  {
+   "phase": "Ab Woche 3",
+   "type": "Embleme / Badges",
+   "cost": "0 €",
+   "status": "geplant",
+   "note": "Vereins-Look: Kreis- oder Wappenform, Vektor-Icon (Schläger, Kegel, Karten, Griff), Jahreszahl. Wird im Renderer gebaut."
+  },
+  {
+   "phase": "Ab Woche 5",
+   "type": "KI-Grafiken",
+   "cost": "≈ 0,04–0,19 $ pro Bild",
+   "status": "nur für Gewinner",
+   "note": "Illustrationen für Nischen mit ≥ 2 Verkäufen; OpenAI-API-Key mit Guthaben nötig."
+  }
+ ],
+ "pricing": {
+  "measured": "2026-11-26, Merch-Formular, Royalty-Gruppe Creator",
+  "tshirt": [
+   {
+    "mkt": "DE",
+    "cur": "€",
+    "points": [
+     [
+      15.99,
+      1.44
+     ],
+     [
+      17.99,
+      2.7
+     ],
+     [
+      19.99,
+      3.96
+     ],
+     [
+      21.99,
+      5.23
+     ],
+     [
+      23.99,
+      6.49
+     ]
+    ],
+    "now": 19.99,
+    "rec": 19.99
+   }
+  ],
+  "hoodie": [],
+  "rules": [
+   "Start mit 19,99 € (Marktniveau, 3,96 € Royalty)",
+   "Design mit ≥ 3 Verkäufen in 30 Tagen → 21,99 € testen (5,23 € Royalty), 2 Wochen vergleichen",
+   "Nie unter 17,99 € (darunter < 2,70 € Royalty)",
+   "Black Friday / Prime Day: Preis halten, Amazon senkt ggf. selbst"
+  ]
+ },
+ "ads": {
+  "budgetCap": "max. 90 € pro Monat, erst ab Gate 1",
+  "breakEven": "ACoS ≤ 20 % (3,96 € Royalty bei 19,99 €)",
+  "campaigns": [
+   {
+    "name": "Neue Designs mit Verkauf",
+    "mkt": "DE",
+    "type": "Sponsored Products, manuell, exakt",
+    "keywords": "Keyword-Paket der Nische (z. B. padel shirt lustig, bouldern t-shirt)",
+    "bid": "0,25 €",
+    "budget": "3 €/Tag gesamt",
+    "period": "ab 4.1.2027 (Gate 1)",
+    "status": "wartet auf Verkäufe"
+   }
+  ],
+  "rules": [
+   "Nur Designs mit ≥ 1 organischem Verkauf bewerben",
+   "Keyword aus nach 15 Klicks ohne Verkauf",
+   "Kampagne aus bei ACoS > 35 % nach 30 Tagen",
+   "Keine Auto-Kampagnen (bisher ROAS 2,33 = Verlust)"
+  ],
+  "history": {
+   "spend": "465 $",
+   "sales": "1.083 $",
+   "roas": "2,33",
+   "result": "≈ −275 $"
+  }
+ },
+ "roadmap": [
+  {
+   "name": "Start",
+   "from": "2026-11-30",
+   "to": "2026-12-06",
+   "items": [
+    "36 DE-Designs hochladen",
+    "Altbestand aufräumen"
+   ]
+  },
+  {
+   "name": "Aufbau",
+   "from": "2026-12-07",
+   "to": "2027-01-03",
+   "items": [
+    "+30 Designs: Embleme",
+    "Nischen-Pipeline prüfen"
+   ]
+  },
+  {
+   "name": "Gewinner",
+   "from": "2027-01-04",
+   "to": "2027-01-17",
+   "items": [
+    "Varianten der Gewinner",
+    "Werbung nur für Verkäufer"
+   ]
+  },
+  {
+   "name": "Entscheidung",
+   "from": "2027-01-18",
+   "to": "2027-01-24",
+   "items": [
+    "Bilanz 8 Wochen",
+    "DE ausbauen, US starten oder stoppen"
+   ]
+  }
+ ],
+ "gates": [
+  {
+   "date": "2027-01-03",
+   "rule": "≥ 5 Verkäufe → Werbung"
+  },
+  {
+   "date": "2027-01-24",
+   "rule": "≥ 15 Verkäufe → weiter"
+  }
+ ],
+ "focus": {
+  "product": "Standard-T-Shirt",
+  "market": "Amazon.de",
+  "why": [
+   "Deutsche Sprüche: kaum Konkurrenz aus den USA",
+   "Höhere Royalty: 3,96 € bei 19,99 € (US: 2,44 $ bei 19,99 $, Gruppe Creator)",
+   "1 Produkt pro Design → bis 50 Designs pro Tag",
+   "Eine Sprache, ein Keyword-Set, eine Auswertung"
+  ],
+  "tradeoff": "Amazon.com ist rund 8-mal größer – US kommt erst als Phase 2, wenn DE funktioniert."
+ },
+ "pipeline": [
+  {
+   "name": "Schützenverein",
+   "status": "prüfen"
+  },
+  {
+   "name": "Handball (Fans/Trainer)",
+   "status": "prüfen"
+  },
+  {
+   "name": "Pickleball DE",
+   "status": "prüfen"
+  },
+  {
+   "name": "Tischtennis Verein",
+   "status": "prüfen"
+  },
+  {
+   "name": "Dart (Vereinsspieler)",
+   "status": "prüfen"
+  },
+  {
+   "name": "Angeln Insider",
+   "status": "prüfen"
+  },
+  {
+   "name": "Imker",
+   "status": "prüfen"
+  },
+  {
+   "name": "Modelleisenbahn",
+   "status": "prüfen"
+  }
+ ],
+ "parked": "14 Designs (Foil US, Padel UK/US, Vovinam FR/IT/ES) geparkt – Phase 2"
+}

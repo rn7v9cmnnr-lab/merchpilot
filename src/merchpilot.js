@@ -9,7 +9,7 @@
   const FX = { EUR: 1, USD: 0.92, GBP: 1.17, JPY: 0.0061 };
   const DEFAULT_CFG = {
     // Amazon-Produktschlüssel × Marktplatz (US, GB, DE, FR, IT, ES, JP) – jede Kombination zählt 1 aufs Tageslimit
-    products: { STANDARD_TSHIRT: ['US', 'GB', 'DE', 'FR', 'IT', 'ES'], STANDARD_PULLOVER_HOODIE: ['US', 'DE'] },
+    products: { STANDARD_TSHIRT: ['DE'] }, // Fokus: nur T-Shirt auf Amazon.de
     dailyProductLimit: 50,   // Amazon zählt Produkt × Marktplatz
     delaySec: [45, 120],     // menschliches Tempo zwischen Uploads
     searchable: true,
@@ -300,7 +300,7 @@
     };
   })();
 
-  window.MerchPilot = { version: '0.4.0', apiCapture: () => ls.get('apiCapture', []), lint: (it) => window.__MP_LINT(it, cfg().lintExtra || []), stats, monthly, sales, designs, cleanupCandidates, render, enqueue, queue, saveQueue, run, fillAndPublish, config: (c) => (c ? ls.set('cfg', { ...ls.get('cfg', {}), ...c }) : cfg()), usedToday };
+  window.MerchPilot = { version: '0.5.0', apiCapture: () => ls.get('apiCapture', []), lint: (it) => window.__MP_LINT(it, cfg().lintExtra || []), stats, monthly, sales, designs, cleanupCandidates, render, enqueue, queue, saveQueue, run, fillAndPublish, config: (c) => (c ? ls.set('cfg', { ...ls.get('cfg', {}), ...c }) : cfg()), usedToday };
   ui.mount();
 
   // Autopilot fortsetzen (nach Seitenwechsel oder täglichem Alarm)
