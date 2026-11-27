@@ -142,7 +142,7 @@
     const card = (x) => {
       const b = x.brief || {}; const pr = x.prices ? Object.entries(x.prices).map(([m, v]) => `${m} ${String(v).replace('.', ',')} €`).join(', ') : '';
       return `<div class="qc ${x.status}">
-        <canvas class="qimg" data-p="${x.id}" width="200" height="240"></canvas>
+        <div style="flex:none;display:flex;flex-direction:column;gap:4px"><canvas class="qimg" data-p="${x.id}" width="200" height="240"></canvas>${x.backImageKey ? `<canvas class="qimg" data-b="${x.id}" width="200" height="240" title="Rückseite"></canvas><span class="muted" style="text-align:center">Rückseite</span>` : ''}</div>
         <div class="qb"><div class="qt">${esc(x.title)}</div><div class="muted">${esc(x.brand)} · ${esc(x.id)}</div>
         ${b.ziel ? `<div class="qr"><span>Ziel</span>${esc(b.ziel)}</div>` : ''}
         ${b.zielgruppe ? `<div class="qr"><span>Zielgruppe</span>${esc(b.zielgruppe)}</div>` : ''}
@@ -182,10 +182,10 @@
     view.querySelectorAll('[data-park]').forEach((b) => (b.onclick = () => set(b.dataset.park, 'parked')));
     view.querySelectorAll('[data-rev]').forEach((b) => (b.onclick = () => set(b.dataset.rev, 'review')));
     view.querySelector('#mp-retry').onclick = () => { MP.saveQueue(MP.queue().map((x) => (x.status === 'error' ? { ...x, status: 'pending', error: null } : x))); queue(); };
-    for (const c of view.querySelectorAll('canvas[data-p]')) {
-      const it = q.find((x) => x.id === c.dataset.p); if (!it) continue;
+    for (const c of view.querySelectorAll('canvas[data-p],canvas[data-b]')) {
+      const it = q.find((x) => x.id === (c.dataset.p || c.dataset.b)); if (!it) continue;
       try {
-        const blob = it.imageKey ? await MP.imgGet(it.imageKey) : it.imageDataUrl ? await (await fetch(it.imageDataUrl)).blob() : it.spec ? await MP.render(it.spec) : null;
+        const blob = c.dataset.b ? await MP.imgGet(it.backImageKey) : it.imageKey ? await MP.imgGet(it.imageKey) : it.imageDataUrl ? await (await fetch(it.imageDataUrl)).blob() : it.spec ? await MP.render(it.spec) : null;
         if (!blob) continue;
         const img = await createImageBitmap(blob, { resizeWidth: 200, resizeHeight: 240, resizeQuality: 'high' }); const g = c.getContext('2d'); g.fillStyle = '#1f2024'; g.fillRect(0, 0, 200, 240); g.drawImage(img, 0, 0, 200, 240);
       } catch (e) { /* Vorschau optional */ }

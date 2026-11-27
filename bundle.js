@@ -71,6 +71,7 @@ window.__MP_FONTS={
     colors: ['black', 'navy', 'asphalt', 'dark_heather'], // helle Motive → dunkle Shirts
     prices: { DE: 19.99 },   // Startpreis laut Preisstrategie
     minRoyalty: 3.5,
+    maxPrice: 23.99,         // Obergrenze für automatische Preisanhebung
     autoApproveH: 12,        // Designs „zur Freigabe“ werden nach X Stunden automatisch freigegeben (0 = aus)
     autoStart: true,         // täglich ab autoStartHour die Warteschlange abarbeiten, sobald eine Merch-Seite offen ist
     autoStartHour: 10,         // Sicherheitsnetz: nie unter 3,50 € Tantieme veröffentlichen
@@ -276,6 +277,22 @@ window.__MP_FONTS={
     await waitFor(() => !/Drag and drop artwork here|Uploading/.test(document.body.innerText), 90000);
     await sleep(1500);
   }
+  // Rückendruck: im Produkt-Editor Reiter „Back“ öffnen und Motiv in dessen Upload-Feld ziehen
+  async function dropBack(blob) {
+    await openEditor();
+    const vis = (e) => !!(e.offsetParent || e.getClientRects().length);
+    const tab = [...document.querySelectorAll('a,button,li,span,div')].filter((e) => e.children.length === 0 && /^Back$/i.test(e.textContent.trim()) && vis(e)).pop();
+    if (!tab) throw new Error('Reiter „Back“ nicht gefunden');
+    tab.click(); await sleep(1200);
+    const zone = [...document.querySelectorAll('*')].filter((e) => /Drag and drop artwork here/.test(e.textContent) && e.children.length < 6 && vis(e)).pop();
+    if (!zone) throw new Error('Upload-Feld Rückseite nicht gefunden');
+    const dt = new DataTransfer(); dt.items.add(new File([blob], 'back.png', { type: 'image/png' }));
+    ['dragenter', 'dragover', 'drop'].forEach((t) => zone.dispatchEvent(new DragEvent(t, { bubbles: true, cancelable: true, dataTransfer: dt })));
+    await waitFor(() => ![...document.querySelectorAll('*')].some((e) => /Drag and drop artwork here|Uploading/.test(e.textContent) && e.children.length < 6 && vis(e)), 90000);
+    await sleep(1500);
+    const front = [...document.querySelectorAll('a,button,li,span,div')].filter((e) => e.children.length === 0 && /^Front$/i.test(e.textContent.trim()) && vis(e)).pop();
+    front?.click(); await sleep(500);
+  }
   async function selectProducts(products) {
     const modal = () => $('.modal.show');
     const btn = (txt) => [...(modal()?.querySelectorAll('button,a') || [])].find((b) => b.innerText.trim() === txt);
@@ -337,9 +354,19 @@ window.__MP_FONTS={
     if (!blob) throw new Error('Bild fehlt in der Ablage: ' + item.imageKey);
     await dropArtwork(blob);
     await selectProducts(item.products || c.products);
+    if (item.backImageKey) {
+      const back = await imgGet(item.backImageKey);
+      if (!back) throw new Error('Rückenbild fehlt: ' + item.backImageKey);
+      await dropBack(back);
+    }
     await setColors(item.colors || c.colors);
-    const roy = await setPrices(item.prices || c.prices);
-    item.royalty = roy;
+    const prices = { ...(item.prices || c.prices) };
+    let roy = await setPrices(prices);
+    // Mindest-Tantieme halten: Preis in 1-€-Schritten anheben (max. c.maxPrice), z. B. bei Rückendruck
+    for (const mk of Object.keys(roy)) {
+      while (roy[mk] < (c.minRoyalty || 0) && prices[mk] + 1 <= (c.maxPrice || 23.99)) { prices[mk] = +(prices[mk] + 1).toFixed(2); roy = { ...roy, ...(await setPrices({ [mk]: prices[mk] })) }; }
+    }
+    item.royalty = roy; item.pricesUsed = prices;
     for (const [mk, r] of Object.entries(roy)) if (r < (c.minRoyalty || 0)) throw new Error(`Tantieme ${mk} ${r} < Minimum ${c.minRoyalty}`);
     if (item.translate ?? c.translate) $('#translation-request-yes')?.click(); else $('#translation-request-no')?.click();
     await sleep(500);
@@ -438,7 +465,7 @@ window.__MP_FONTS={
     };
   })();
 
-  window.MerchPilot = { version: '0.9.0', imgGet, imgPut, imgKeys, importInput, apiCapture: () => ls.get('apiCapture', []), lint: (it) => window.__MP_LINT(it, cfg().lintExtra || []), stats, monthly, sales, designs, cleanupCandidates, render, enqueue, queue, saveQueue, run, fillAndPublish, setColors, setPrices, config: (c) => (c ? ls.set('cfg', { ...ls.get('cfg', {}), ...c }) : cfg()), usedToday };
+  window.MerchPilot = { version: '0.10.0', imgGet, imgPut, imgKeys, importInput, apiCapture: () => ls.get('apiCapture', []), lint: (it) => window.__MP_LINT(it, cfg().lintExtra || []), stats, monthly, sales, designs, cleanupCandidates, render, enqueue, queue, saveQueue, run, fillAndPublish, setColors, setPrices, config: (c) => (c ? ls.set('cfg', { ...ls.get('cfg', {}), ...c }) : cfg()), usedToday };
   ui.mount();
   importInput();
 
@@ -883,7 +910,7 @@ window.__MP_FONTS={
     const card = (x) => {
       const b = x.brief || {}; const pr = x.prices ? Object.entries(x.prices).map(([m, v]) => `${m} ${String(v).replace('.', ',')} €`).join(', ') : '';
       return `<div class="qc ${x.status}">
-        <canvas class="qimg" data-p="${x.id}" width="200" height="240"></canvas>
+        <div style="flex:none;display:flex;flex-direction:column;gap:4px"><canvas class="qimg" data-p="${x.id}" width="200" height="240"></canvas>${x.backImageKey ? `<canvas class="qimg" data-b="${x.id}" width="200" height="240" title="Rückseite"></canvas><span class="muted" style="text-align:center">Rückseite</span>` : ''}</div>
         <div class="qb"><div class="qt">${esc(x.title)}</div><div class="muted">${esc(x.brand)} · ${esc(x.id)}</div>
         ${b.ziel ? `<div class="qr"><span>Ziel</span>${esc(b.ziel)}</div>` : ''}
         ${b.zielgruppe ? `<div class="qr"><span>Zielgruppe</span>${esc(b.zielgruppe)}</div>` : ''}
@@ -923,10 +950,10 @@ window.__MP_FONTS={
     view.querySelectorAll('[data-park]').forEach((b) => (b.onclick = () => set(b.dataset.park, 'parked')));
     view.querySelectorAll('[data-rev]').forEach((b) => (b.onclick = () => set(b.dataset.rev, 'review')));
     view.querySelector('#mp-retry').onclick = () => { MP.saveQueue(MP.queue().map((x) => (x.status === 'error' ? { ...x, status: 'pending', error: null } : x))); queue(); };
-    for (const c of view.querySelectorAll('canvas[data-p]')) {
-      const it = q.find((x) => x.id === c.dataset.p); if (!it) continue;
+    for (const c of view.querySelectorAll('canvas[data-p],canvas[data-b]')) {
+      const it = q.find((x) => x.id === (c.dataset.p || c.dataset.b)); if (!it) continue;
       try {
-        const blob = it.imageKey ? await MP.imgGet(it.imageKey) : it.imageDataUrl ? await (await fetch(it.imageDataUrl)).blob() : it.spec ? await MP.render(it.spec) : null;
+        const blob = c.dataset.b ? await MP.imgGet(it.backImageKey) : it.imageKey ? await MP.imgGet(it.imageKey) : it.imageDataUrl ? await (await fetch(it.imageDataUrl)).blob() : it.spec ? await MP.render(it.spec) : null;
         if (!blob) continue;
         const img = await createImageBitmap(blob, { resizeWidth: 200, resizeHeight: 240, resizeQuality: 'high' }); const g = c.getContext('2d'); g.fillStyle = '#1f2024'; g.fillRect(0, 0, 200, 240); g.drawImage(img, 0, 0, 200, 240);
       } catch (e) { /* Vorschau optional */ }
