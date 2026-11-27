@@ -851,6 +851,7 @@ window.__MP_FONTS={
   details.sec>summary{cursor:pointer;padding:12px 14px;font-weight:700;list-style:none;display:flex;align-items:center;gap:8px}
   details.sec>summary::before{content:'›';display:inline-block;transition:.15s;color:var(--m);font-size:16px}details.sec[open]>summary::before{transform:rotate(90deg)}
   details.sec>summary .muted{font-weight:400}details.sec>.in{padding:0 14px 14px}
+  .mbar{display:flex;gap:4px;height:130px;align-items:stretch;margin-top:4px}.mbar div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center}.mbar i{width:100%;border-radius:3px 3px 0 0}.mbar span{font-size:10px;color:var(--m);margin-top:3px;height:12px}
   table{width:100%;border-collapse:collapse;font-size:12.5px}th,td{padding:5px 7px;border-bottom:1px solid #eef0f3;text-align:left}th{color:var(--m);font-weight:600;font-size:11.5px}td.n,th.n{text-align:right}
   textarea,input[type=text],input[type=number]{box-sizing:border-box;border:1px solid #d5d9e0;border-radius:8px;padding:6px 8px;font:12px ui-monospace,monospace}
   /* Altbestand aus plan.js / rules.js */
@@ -868,6 +869,7 @@ window.__MP_FONTS={
   const L = { get: (k, d) => { try { return JSON.parse(localStorage.getItem('mp.' + k)) ?? d; } catch (e) { return d; } }, set: (k, v) => localStorage.setItem('mp.' + k, JSON.stringify(v)) };
   const today = () => new Date().toISOString().slice(0, 10);
   const dmy = (d) => d ? d.slice(8, 10) + '.' + d.slice(5, 7) + '.' : '';
+  const MON = ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'];
   const cnt = (q, s) => q.filter((x) => x.status === s).length;
 
   let tab = sessionStorage.getItem('mp.tab2') || 'cockpit';
@@ -937,8 +939,8 @@ window.__MP_FONTS={
       { k: 'Designs', v: rev + pend, s: `Puffer ${buffer.toFixed(1).replace('.', ',')} Tage`, c: buffer < 1 ? 'r' : buffer < 2 ? 'o' : 'g', tag: buffer < 1 ? 'Nachschub nötig' : 'im Puffer', to: () => go('review', 'all') },
       { k: 'Freigabe', v: rev, s: c.autoApproveH ? `sonst automatisch nach ${c.autoApproveH} h` : 'nur manuell', c: rev ? 'o' : 'g', tag: rev ? 'Deine Prüfung' : 'nichts offen', to: () => go('review', 'review') },
       { k: 'Upload', v: `${used}/${c.dailyProductLimit}`, s: `${pend} freigegeben`, c: err ? 'r' : ap.c || 'g', tag: ap.t, meter: used / c.dailyProductLimit, to: () => go('review', 'pending') },
-      { k: 'Live', v: r?.live ?? done, s: `${done} hochgeladen${r?.problems ? ` · ${r.problems} Problem` : ''}${asins ? ` · ${asins} ASINs` : ''}`, c: r?.problems ? 'r' : 'g', tag: r ? `${r.phases?.Indexierung || 0} indexieren · ${r.phases?.Test || 0} im Test` : 'Status lädt', to: () => go('review', 'done') },
-      { k: 'Auswerten', v: cur ? eur(cur.royaltyEUR) : '–', s: `Tantieme ${cur ? cur.month : ''}${prev ? ` · Vormonat ${eur(prev.royaltyEUR)}` : ''}`, c: 'g', tag: liveAds.length ? `${liveAds.length} Kampagnen · ${ads?.dailyBudget || ''} €/Tag` : 'Werbung aus', to: () => go('analyse') },
+      { k: 'Live', v: r?.live ?? done, s: `${done} hochgeladen${r?.problems ? ` · ${r.problems} Problem` : ''}${asins ? ` · ${asins} ASINs` : ''}`, c: r?.problems ? 'r' : 'g', tag: r ? Object.entries(r.phases || {}).sort((a, b) => b[1] - a[1]).slice(0, 2).map(([k, v]) => `${v} ${k}`).join(' · ') : 'Status lädt', to: () => go('review', 'done') },
+      { k: 'Auswerten', v: cur ? eur(cur.royaltyEUR) : '–', s: `Tantieme ${cur ? MON[+cur.month.slice(5) - 1] : ''}${prev ? ` · ${MON[+prev.month.slice(5) - 1]} ${eur(prev.royaltyEUR)}` : ''}`, c: 'g', tag: liveAds.length ? `${liveAds.length} Kampagnen · ${ads?.dailyBudget || ''} €/Tag` : 'Werbung aus', to: () => go('analyse') },
     ];
     // Entscheidungen: nur was David tun/entscheiden muss; Infos grau
     const decided = L.get('decided', {});
@@ -1041,7 +1043,7 @@ window.__MP_FONTS={
     const s = ensureStats(), st = L.get('strategy'), m = s?.monthly || [];
     const y = m.slice(-12), sum = (a, k) => a.reduce((x, z) => x + z[k], 0), max = Math.max(1, ...m.map((x) => x.units));
     const ads = st?.ads?.live;
-    const bars = m.map((x, i) => { const h = Math.round((x.units / max) * 110); return `<rect fill="${i === m.length - 1 ? '#0a7d5a' : '#9fd3bd'}" x="${i * 30 + 4}" y="${120 - h}" width="22" height="${h}" rx="2"><title>${x.month}: ${x.units} Stk · ${eur(x.royaltyEUR)}</title></rect>${i % 3 === 0 ? `<text x="${i * 30 + 15}" y="134" font-size="9" text-anchor="middle" fill="#889">${x.month.slice(2)}</text>` : ''}`; }).join('');
+    const bars = m.map((x, i) => `<div title="${x.month}: ${x.units} Stk · ${eur(x.royaltyEUR)}"><i style="height:${Math.max(2, (x.units / max) * 100)}%;background:${i === m.length - 1 ? '#0a7d5a' : '#9fd3bd'}"></i><span>${x.month.slice(5) === '01' || i === 0 ? x.month.slice(0, 4) : MON[+x.month.slice(5) - 1][0]}</span></div>`).join('');
     const SEC = [
       ['rules', 'Nischen & Regeln', 'Phase je Design, Ampel je Nische, Gates', (el) => window.__MP_RULES?.view(el)],
       ['ads', 'Werbung & Preise', ads ? `${(st.ads.campaigns || []).filter((c) => c.status === 'live').length} Kampagnen live · ${ads.dailyBudget} €/Tag` : '', (el) => window.__MP_PLAN?.pricing(el)],
@@ -1052,9 +1054,9 @@ window.__MP_FONTS={
     view.innerHTML = `<div class="kpis">
         <div class="card"><div class="h">Verkäufe 12 M</div><b>${s ? sum(y, 'units') : '–'}</b><span class="muted">Vorjahr ${s ? sum(m.slice(-24, -12), 'units') : '–'}</span></div>
         <div class="card"><div class="h">Tantieme 12 M</div><b>${s ? eur(sum(y, 'royaltyEUR')) : '–'}</b><span class="muted">gesamt ${s ? eur(s.totals.royaltyEUR) : '–'}</span></div>
-        <div class="card"><div class="h">Tantieme ${m.at(-1)?.month || ''}</div><b>${m.at(-1) ? eur(m.at(-1).royaltyEUR, 2) : '–'}</b><span class="muted">${m.at(-1)?.units ?? 0} Verkäufe</span></div>
+        <div class="card"><div class="h">Tantieme ${m.at(-1) ? MON[+m.at(-1).month.slice(5) - 1] + ' ' + m.at(-1).month.slice(0, 4) : ''}</div><b>${m.at(-1) ? eur(m.at(-1).royaltyEUR, 2) : '–'}</b><span class="muted">${m.at(-1)?.units ?? 0} Verkäufe</span></div>
         <div class="card"><div class="h">Werbebudget</div><b>${ads ? ads.dailyBudget + ' €/Tag' : '–'}</b><span class="muted">Auswertung Mo + Do</span></div></div>
-      <div class="card" style="margin-bottom:12px"><div style="display:flex"><div class="h" style="flex:1">Verkäufe pro Monat (24 M)</div><button class="btn sec" id="rf">↻</button></div><svg viewBox="0 0 ${m.length * 30 + 8} 140" width="100%" style="max-height:170px">${bars}</svg></div>
+      <div class="card" style="margin-bottom:12px"><div style="display:flex"><div class="h" style="flex:1">Verkäufe pro Monat (24 M)</div><button class="btn sec" id="rf">↻</button></div><div class="mbar">${bars}</div></div>
       ${SEC.map(([k, t, sub]) => `<details class="sec" data-k="${k}"><summary>${t}<span class="muted">· ${esc(sub)}</span></summary><div class="in"></div></details>`).join('')}`;
     view.querySelector('#rf').onclick = () => { view.querySelector('#rf').disabled = true; MP.stats().then(analyse); };
     const open = new Set(JSON.parse(sessionStorage.getItem('mp.open') || '[]'));
