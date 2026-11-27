@@ -221,43 +221,68 @@
   ]
  },
  "ads": {
-  "budgetCap": "Weihnachtstest: max. 5 €/Tag, Deckel 100 € bis 24.12.; danach 90 €/Monat nur für Gewinner",
+  "budgetCap": "Live seit 27.11.: 6 €/Tag gesamt (≈ 150 € bis 21.12. aus 200 € Startguthaben); danach Budget ≤ Tantieme des Vormonats",
   "breakEven": "ACoS ≤ 20 % (3,96 € Royalty bei 19,99 €)",
   "campaigns": [
    {
     "name": "MP-DE-Auto-Discovery",
     "mkt": "DE",
-    "type": "Sponsored Products, automatisch",
+    "type": "SP automatisch",
     "keywords": "Amazon findet Begriffe – Ernte Mo + Do",
     "bid": "0,20 €",
     "budget": "2 €/Tag",
-    "period": "ab ASIN live bis 21.12.",
-    "status": "vorbereitet – wartet auf Freigabe + ASINs"
+    "period": "27.11.–21.12.",
+    "status": "live",
+    "asins": 50
    },
    {
-    "name": "MP-DE-Weihnachten-Exakt",
+    "name": "MP-DE-Manuell-Nischen (Padel)",
     "mkt": "DE",
-    "type": "Sponsored Products, manuell, exakt",
-    "keywords": "Design-Keywords der 11 Kandidaten",
-    "bid": "0,30 €",
-    "budget": "2 €/Tag",
-    "period": "ab ASIN live (~29.11.) bis 21.12.",
-    "status": "vorbereitet – wartet auf Freigabe + ASINs"
-   },
-   {
-    "name": "MP-DE-Weihnachten-Phrase",
-    "mkt": "DE",
-    "type": "Sponsored Products, manuell, Wortgruppe",
-    "keywords": "Nischen-Keywords (padel shirt, kegelclub shirt …)",
-    "bid": "0,20 €",
+    "type": "SP manuell exakt 0,30 + Wortgruppe 0,20",
+    "keywords": "padel shirt, padel t-shirt …",
+    "bid": "0,20–0,30 €",
     "budget": "1 €/Tag",
-    "period": "ab ASIN live bis 21.12.",
-    "status": "vorbereitet – wartet auf Freigabe + ASINs"
+    "period": "27.11.–21.12.",
+    "status": "live",
+    "asins": 12
+   },
+   {
+    "name": "MP-DE-Manuell-Bouldern",
+    "mkt": "DE",
+    "type": "SP manuell exakt 0,30 + Wortgruppe 0,20",
+    "keywords": "bouldern shirt, boulder crew, klettern shirt …",
+    "bid": "0,20–0,30 €",
+    "budget": "1 €/Tag",
+    "period": "27.11.–21.12.",
+    "status": "live",
+    "asins": 13
+   },
+   {
+    "name": "MP-DE-Manuell-Kegeln",
+    "mkt": "DE",
+    "type": "SP manuell exakt 0,30 + Wortgruppe 0,20",
+    "keywords": "kegeln shirt, kegelclub shirt, kegelbruder …",
+    "bid": "0,20–0,30 €",
+    "budget": "1 €/Tag",
+    "period": "27.11.–21.12.",
+    "status": "live",
+    "asins": 13
+   },
+   {
+    "name": "MP-DE-Manuell-Karten",
+    "mkt": "DE",
+    "type": "SP manuell exakt 0,30 + Wortgruppe 0,20",
+    "keywords": "skat shirt, doppelkopf shirt, schafkopf …",
+    "bid": "0,20–0,30 €",
+    "budget": "1 €/Tag",
+    "period": "27.11.–21.12.",
+    "status": "live",
+    "asins": 12
    },
    {
     "name": "Gewinner",
     "mkt": "DE",
-    "type": "manuell, exakt",
+    "type": "manuell exakt",
     "keywords": "Suchbegriffe mit Verkauf",
     "bid": "0,25–0,35 €",
     "budget": "3 €/Tag",
@@ -276,6 +301,15 @@
    "sales": "1.083 $",
    "roas": "2,33",
    "result": "≈ −275 $"
+  },
+  "live": {
+   "since": "2026-11-27",
+   "dailyBudget": 6,
+   "seed": 200,
+   "nextReview": [
+    "Mo",
+    "Do"
+   ]
   }
  },
  "roadmap": [
